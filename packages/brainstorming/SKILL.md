@@ -1,6 +1,6 @@
 ---
 name: brainstorming
-description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+description: 'You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.'
 ---
 
 # Brainstorming Ideas Into Designs
@@ -21,7 +21,10 @@ Every project goes through this process. A todo list, a single-function utility,
 
 You MUST create a task for each of these items and complete them in order:
 
-1. **Explore project context** — check files, docs, recent commits
+1. **Explore and Collect context** — check files, docs, recent commits, Conversation history, external knowledge base, and other resources not accessible to you that you think may be helpful to understand the current state and the idea in more depth, for example, When developing a frontend feature, you might need figma access, or you might need to check backend repo to get entire picture of the feature, you should ask user for access to these resources and explore them before asking clarifying questions.
+
+Don't forget to check the Conversation history for any relevant information shared by the user in previous interactions. This will help you understand the user's intent and requirements more clearly.
+
 2. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
 3. **Propose 2-3 approaches** — with trade-offs and your recommendation
 4. **Present design** — in sections scaled to their complexity, get user approval after each section
@@ -101,7 +104,7 @@ flowchart TD
 
 **Documentation:**
 
-- Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
+- Write the validated design (spec) to `docs/specs/YYYY-MM-DD-<topic>-design.md`
   - (User preferences for spec location override this default)
 - Use elements-of-style:writing-clearly-and-concisely skill if available
 - Commit the design document to git

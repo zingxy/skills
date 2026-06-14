@@ -28,6 +28,9 @@ coverage/
 .turbo/
 .eslintcache
 
+# Playwright / screenshot artifacts
+.playwright-mcp/
+
 # Editor / OS
 .DS_Store
 .idea/

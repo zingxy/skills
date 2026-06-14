@@ -1,0 +1,158 @@
+@import 'tailwindcss';
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource-variable/jetbrains-mono";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Theme: Claude warm-editorial (derived from references/DESIGN.md)
+  Cream canvas + coral primary + dark navy surfaces. Warm/humanist, not cool.
+  shadcn tokens are mapped to the DESIGN.md palette so component + chart + utility
+  usage all land on-brand. Edit DESIGN.md and keep these in sync.
+*/
+
+:root {
+    /* surfaces & text — cream canvas, warm ink */
+    --background: #faf9f5;        /* canvas */
+    --foreground: #141413;        /* ink */
+    --card: #efe9de;              /* surface-card (one step darker than canvas) */
+    --card-foreground: #141413;
+    --popover: #faf9f5;
+    --popover-foreground: #141413;
+    /* coral primary — the brand voltage */
+    --primary: #cc785c;
+    --primary-foreground: #ffffff;
+    --secondary: #efe9de;         /* cream secondary surface */
+    --secondary-foreground: #141413;
+    --muted: #f5f0e8;             /* surface-soft */
+    --muted-foreground: #6c6a64;  /* muted */
+    --accent: #e8e0d2;            /* surface-cream-strong (hover/selected) */
+    --accent-foreground: #141413;
+    --destructive: #c64545;       /* error */
+    --border: #e6dfd8;            /* hairline */
+    --input: #e6dfd8;
+    --ring: #cc785c;              /* coral focus ring */
+    /* charts — warm brand categorical ramp: coral, teal, amber, terracotta, green */
+    --chart-1: #cc785c;
+    --chart-2: #5db8a6;
+    --chart-3: #e8a55a;
+    --chart-4: #a9583e;
+    --chart-5: #5db872;
+    --radius: 0.75rem;            /* lg = 12px per DESIGN.md */
+    /* sidebar — cream */
+    --sidebar: #f5f0e8;
+    --sidebar-foreground: #141413;
+    --sidebar-primary: #cc785c;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #e8e0d2;
+    --sidebar-accent-foreground: #141413;
+    --sidebar-border: #e6dfd8;
+    --sidebar-ring: #cc785c;
+}
+
+.dark {
+    /* surfaces & text — dark navy, cream-tinted on-dark text */
+    --background: #181715;        /* surface-dark */
+    --foreground: #faf9f5;        /* on-dark */
+    --card: #252320;             /* surface-dark-elevated */
+    --card-foreground: #faf9f5;
+    --popover: #252320;
+    --popover-foreground: #faf9f5;
+    --primary: #cc785c;           /* coral stays the brand accent on dark */
+    --primary-foreground: #ffffff;
+    --secondary: #252320;
+    --secondary-foreground: #faf9f5;
+    --muted: #1f1e1b;            /* surface-dark-soft */
+    --muted-foreground: #a09d96;  /* on-dark-soft */
+    --accent: #252320;
+    --accent-foreground: #faf9f5;
+    --destructive: #c64545;
+    --border: #ffffff1a;          /* subtle 10% hairline on dark */
+    --input: #ffffff26;
+    --ring: #cc785c;
+    --chart-1: #cc785c;
+    --chart-2: #5db8a6;
+    --chart-3: #e8a55a;
+    --chart-4: #a9583e;
+    --chart-5: #5db872;
+    --sidebar: #1f1e1b;
+    --sidebar-foreground: #faf9f5;
+    --sidebar-primary: #cc785c;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #252320;
+    --sidebar-accent-foreground: #faf9f5;
+    --sidebar-border: #ffffff1a;
+    --sidebar-ring: #cc785c;
+}
+
+@theme inline {
+    /* editorial type: humanist sans body + slab-serif display (DESIGN.md substitutes) */
+    --font-sans: 'Inter Variable', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Cormorant Garamond', 'Tiempos Headline', Garamond, serif;
+    --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+  /* Editorial display: serif headings with negative tracking (DESIGN.md voice) */
+  .font-heading {
+    letter-spacing: -0.02em;
+    }
+  /* Shiki dual-theme: swap to dark colors when the deck is in dark mode */
+  .dark .shiki,
+  .dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    }
+}

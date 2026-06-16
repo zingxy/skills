@@ -27,7 +27,20 @@ The single goal is **make the idea click for someone seeing it for the first tim
 
 When in doubt, reach for the form that best builds intuition — analogy, worked example, annotated visual, step-by-step reveal — even if it's more work to build.
 
+**Default toward the visual, not the paragraph.** The common failure is under-visualizing: explaining a mechanism, a process, or a structure in prose because prose is the least effort. Invert it — if a concept *moves, has parts, or has structure*, the default is a diagram, animation, or interactive demo, and prose is what you justify. The reader should grasp each section's core from its visual; the prose is voice-over.
+
+**Quality bar for an interactive demo.** A demo earns its place only if it's genuinely detailed and lets the reader *derive* the idea, not just look at a snapshot:
+
+- **Real controls** — sliders, play/pause/step, toggles — that change something *meaningful*. A slider that doesn't visibly teach is noise.
+- **Live, labeled state** — values, readouts, and highlights that update as the reader interacts, so cause and effect are visible.
+- **Annotations that react** — point at what just happened ("步子 > 1.0 → 小球冲出山谷"), not a static caption alone.
+- **A turnable knob for every "it depends" in the content** — if the source says "too large diverges, too small is slow," the reader should be able to push it to both extremes and watch.
+
+A static image of a dynamic idea is a missed opportunity; build the moving version. Spend the effort here — this is where presentations become vivid instead of merely correct.
+
 ## Library cheat-sheet
+
+This table is a **starting set of common, well-worn picks — not a closed whitelist.** If you know a library or tool that fits the content better than anything here, use it; pick by what explains the idea best (and themes cleanly into the deck), not by what's listed. The entries below are sensible defaults so you don't have to deliberate over the routine cases — they are not a constraint on the unusual one.
 
 | Need | Reach for | Install | Weight | Notes |
 |------|-----------|---------|--------|-------|

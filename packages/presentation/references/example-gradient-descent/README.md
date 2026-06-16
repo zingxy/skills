@@ -15,7 +15,7 @@ A complete, worked presentation built with this skill — the reference example 
 
 ## Running it
 
-This example is the package's default `src/App.tsx`. From `packages/presentation`:
+This is a reference example, not the live entry point — `src/App.tsx` ships as a minimal placeholder. To preview *this* example, copy its `App.tsx` (and `visuals/`) over `src/App.tsx`, then from `packages/presentation`:
 
 ```
 pnpm dev

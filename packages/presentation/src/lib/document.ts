@@ -44,3 +44,15 @@ export interface PresentationDoc {
   /** Optional references / appendix. */
   references?: ReactNode;
 }
+
+/**
+ * One entry in the home index. Each presentation is a self-contained article
+ * under `src/articles/<id>/`; the home page (`App.tsx`) lists these and renders
+ * the selected one. Build new presentations as articles — never edit `App.tsx`.
+ */
+export interface Article {
+  /** URL-ish slug, must be unique; also the article folder name. */
+  id: string;
+  /** The presentation itself; its frontmatter drives the home-page card. */
+  doc: PresentationDoc;
+}

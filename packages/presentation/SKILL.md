@@ -99,7 +99,11 @@ Write the presentation's content in **Chinese by default** — titles, prose, ca
 
 3. **Plan the document, run the litmus test, show the user.** Fill in the fixed skeleton (see "Stable structure" below): frontmatter, and the ordered sections as *question it answers → chosen representation* ("§1 学习在调什么? → 直觉散文 + 网络示意图;§2 怎么知道往哪调? → 山谷类比 + 可拖动 demo;§3 哪边是下坡? → 'why' callout + 延后引入的公式"). **Before showing the user, run two checks.** (1) *Transcription* — lay your section titles next to the source's headings; if they parallel, restructure now, don't show it yet. (2) *Under-visualization* — scan your representation column: if it's mostly "prose" with a chart or two, you've under-visualized; upgrade the mechanism/process/structure sections to diagrams or interactive demos before showing it. The plan you show the user must include the **motivating problem, the spine analogy, the question chain, and a real representation per section** — not just a list of titles — so both failures are caught here, at the cheap stage. Get a nod. Re-ordering an outline is cheap; rebuilding rendered sections isn't.
 
-4. **Fill the `Document`, don't rebuild it.** **Replace the placeholder `src/App.tsx`** with your `PresentationDoc` object passed to `<Document doc={...} />` (copy `references/example-gradient-descent/App.tsx` as a scaffold — `src/App.tsx` itself ships as a throwaway starter, so overwriting it loses nothing). Compose section content from the bundled **blocks** (`Prose`, `Callout`, `ChartFrame`, `CodeBlock`, `Stat`/`StatGrid`, `TwoCol`). For visuals, write each chart/diagram/canvas as a small component in `src/components/visuals/` and drop it *inside* `ChartFrame`/`DiagramFrame` — install whatever viz library explains it best (`references/representation-guide.md`). **Do not hand-roll the page layout, TOC, section headers, or spacing — the shell owns all of that.** See `references/blocks.md` for every block's API.
+4. **Author it as a new, self-contained article — never edit `App.tsx`.** Each presentation is its own folder `src/articles/<your-id>/` (copy `src/articles/konva-transformer/` as a scaffold). In that folder:
+   - `index.tsx` **exports** `const doc: PresentationDoc = { ... }` (compose section `content` from the bundled **blocks**: `Prose`, `Callout`, `ChartFrame`, `CodeBlock`, `Stat`/`StatGrid`, `TwoCol`).
+   - keep this article's custom visuals **inside the folder**, e.g. `src/articles/<your-id>/visuals/`, and drop each *inside* `ChartFrame`/`DiagramFrame` — install whatever viz library explains it best (`references/representation-guide.md`). (Genuinely generic helpers like `@/components/visuals/Math` stay shared.)
+   
+   Then **register it** in `src/articles/index.ts` (`{ id: '<your-id>', doc }`) — that one line makes it appear on the home page automatically. `App.tsx` is the home/index + router and is **off-limits**: do not author a deck there, and do not hand-roll the page layout, TOC, section headers, or spacing — the `Document` shell owns all of that. See `references/blocks.md` for every block's API.
 
 5. **Present via the dev server (default).** Run `pnpm dev` and actually look at it (use the `run`/`verify` skill or drive a browser) — charts and animations especially need to be *seen*, not assumed. Iterate until each section truly lands at ELI5 level, then hand the user the local URL as the deliverable. **Only build a single-file HTML when the user explicitly asks** ("export", "give me an html", "a file I can send") — then run `pnpm build` and point them to `dist/index.html`. Don't build by default; the running dev server is the presentation.
 
@@ -109,20 +113,22 @@ Every presentation uses one fixed skeleton so the output is predictable and cons
 
 **Frontmatter cover** (title, subtitle, authors, date, tags, one-line TL;DR) → **sticky-sidebar TOC** (auto-derived from the section titles, with scroll-spy) → **Overview** → **numbered topic sections** → **Summary** → optional **Glossary** / **References**.
 
-You define the document as data in `App.tsx`:
+**Articles, not App.tsx.** `App.tsx` is a home/index page that lists the articles and renders the selected one; you never touch it. You write each presentation as a self-contained article that *exports* a `doc`, in `src/articles/<id>/index.tsx`:
 
 ```tsx
-const doc: PresentationDoc = {
+// src/articles/<id>/index.tsx
+export const doc: PresentationDoc = {
   frontmatter: { title, subtitle, authors, date, tags, tldr },
   overview: <Prose markdown={`...`} />,
   sections: [{ id, title, intent, content: <>...</> }, ...],  // content is flexible
   summary: <>...</>,
   glossary: [{ term, def }],   // optional
 };
-// App: return <Document doc={doc} />
+// then register in src/articles/index.ts:  { id: '<id>', doc }
+// App.tsx renders <Document doc={doc} /> for you — don't write that yourself.
 ```
 
-**What's fixed vs. what varies:** the cover, TOC, section numbering/headers, spacing rhythm, typography, and color are all owned by the shell and blocks — identical across every presentation. Only each section's `content` varies. This is the whole point: stable, on-brand structure; flexible content.
+The home page's card for the article is driven by its `frontmatter`, so a good title/subtitle/tags/date matter. **What's fixed vs. what varies:** the home index, the cover, TOC, section numbering/headers, spacing rhythm, typography, and color are all owned by the shell — identical across every presentation. Only each section's `content` varies. This is the whole point: stable, on-brand structure; flexible content.
 
 **Hard rule:** never reach around the shell. Don't rebuild the cover/TOC/headers, and don't override block styling via `className` (use it only for layout positioning *inside* a section). If a block seems to be missing for a real need, add it to `src/components/blocks/` as a reusable component rather than one-off styling in a section — that keeps every future presentation consistent.
 
@@ -145,7 +151,8 @@ The template's theme **is** the Claude warm-editorial design system from `refere
 
 ## Reference
 
-- `references/example-gradient-descent/` — a complete worked demo (the "神经网络是怎么学习的" presentation). The best reference for how `Document` + blocks + custom visuals compose into a finished, ELI5-level piece. **Skim it before building your first presentation** and copy its `App.tsx` as your scaffold. (Note: `src/App.tsx` itself ships as a minimal placeholder — `pnpm dev` runs that until you replace it; the worked example lives here under `references/` so it's never clobbered.)
-- `references/blocks.md` — the bundled block components and the `Document` skeleton: every prop and when to use each. Read it in step 4 before writing `App.tsx`.
+- `src/articles/konva-transformer/` — a complete, in-repo article in the exact structure you'll copy: `index.tsx` exporting a `doc`, with its own `visuals/` folder, registered in `src/articles/index.ts`. **Copy this folder as the scaffold for a new article.**
+- `references/example-gradient-descent/` — a complete worked demo (the "神经网络是怎么学习的" presentation), the best reference for how `Document` + blocks + custom visuals compose into a finished, ELI5-level piece. **Skim it before building your first presentation** for the *content* craft; its `App.tsx` is an older single-deck layout, so for *structure* copy the article folder above instead (move its `doc` into `src/articles/<id>/index.tsx`).
+- `references/blocks.md` — the bundled block components and the `Document` skeleton: every prop and when to use each. Read it in step 4 before writing your article.
 - `references/representation-guide.md` — content-type → representation → library decision guide (what to put *inside* `ChartFrame`/`DiagramFrame`). Read it in step 2 (and skim before planning). This is where the real value is.
 - `references/DESIGN.md` — the Claude warm-editorial design system (palette, typography, components, spacing, do's & don'ts) that the template theme implements. Consult it for visual specifics.

@@ -4,7 +4,7 @@ The bundled components in `src/components/blocks/` — import everything from `@
 
 ## `Document` — the shell
 
-Renders the whole stable skeleton from a single data object. You write `App.tsx` as `<Document doc={doc} />`.
+Renders the whole stable skeleton from a single data object. **You don't call this yourself** — you export a `doc: PresentationDoc` from `src/articles/<id>/index.tsx` and register it in `src/articles/index.ts`; `App.tsx` (the home/index) renders `<Document doc={doc} onBack={...} />` for the selected article. The optional `onBack` prop adds a "← back to index" link in the TOC sidebar; the home page wires it up.
 
 ```ts
 interface PresentationDoc {

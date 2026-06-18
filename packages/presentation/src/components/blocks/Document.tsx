@@ -31,7 +31,7 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
  * glossary/references) on the right. The TOC is derived from the section titles.
  * Pass a PresentationDoc; only section content varies between presentations.
  */
-export function Document({ doc }: { doc: PresentationDoc }) {
+export function Document({ doc, onBack }: { doc: PresentationDoc; onBack?: () => void }) {
   const { frontmatter: fm, overview, sections, summary, glossary, references } = doc;
 
   const toc = [
@@ -49,6 +49,14 @@ export function Document({ doc }: { doc: PresentationDoc }) {
         {/* Sticky TOC — left rail */}
         <aside className="hidden lg:block pt-32">
           <nav className="sticky top-12 py-2">
+            {onBack && (
+              <button
+                onClick={onBack}
+                className="mb-6 block text-sm text-muted-foreground transition-colors hover:text-primary"
+              >
+                ← 返回目录
+              </button>
+            )}
             <p className="mb-4 text-xs font-medium uppercase tracking-widest text-muted-foreground">
               Contents
             </p>
@@ -74,6 +82,14 @@ export function Document({ doc }: { doc: PresentationDoc }) {
 
         {/* Cover + content column */}
         <div className="min-w-0 max-w-3xl">
+          {onBack && (
+            <button
+              onClick={onBack}
+              className="pt-10 text-sm text-muted-foreground transition-colors hover:text-primary lg:hidden"
+            >
+              ← 返回目录
+            </button>
+          )}
           <header className="pt-20 pb-14 md:pt-32">
             {fm.tags && fm.tags.length > 0 && (
               <div className="mb-6 flex flex-wrap gap-2">

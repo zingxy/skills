@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "description": "Machine-readable catalog of reusable agent skills in this repository.",
+  "basePath": "skills",
+  "skills": [
+    {
+      "name": "brainstorming",
+      "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+      "path": "skills/brainstorming/SKILL.md",
+      "when": "Before any creative, implementation, or behavior-changing task.",
+      "next": ["writing-plans"],
+      "tags": ["design", "requirements", "spec"]
+    },
+    {
+      "name": "writing-plans",
+      "description": "Use when you have a spec or requirements for a multi-step task, before touching code.",
+      "path": "skills/writing-plans/SKILL.md",
+      "when": "After a spec/design is approved and before implementation begins.",
+      "next": ["executing-plans"],
+      "tags": ["planning", "implementation", "tasks"]
+    },
+    {
+      "name": "executing-plans",
+      "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints.",
+      "path": "skills/executing-plans/SKILL.md",
+      "when": "When a written implementation plan exists and needs to be executed.",
+      "next": [],
+      "tags": ["execution", "implementation", "verification"]
+    }
+  ]
+}

@@ -28,7 +28,7 @@ Don't forget to check the Conversation history for any relevant information shar
 2. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
 3. **Propose 2-3 approaches** — with trade-offs and your recommendation
 4. **Present design** — in sections scaled to their complexity, get user approval after each section
-5. **Write design doc** — save to `docs/specs/YYYY-MM-DD-<topic>-design.md` and commit
+5. **Write design doc** — save to `docs/specs/YYYY-MM-DD-<topic>-design.md`
 6. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope (see below)
 7. **User reviews written spec** — ask user to review the spec file before proceeding
 8. **Transition to implementation** — invoke writing-plans skill to create implementation plan

@@ -2,6 +2,45 @@
 
 这个仓库维护一组可复用的 Agent Skill，供 **Kimi**、**Claude** 等 AI 助手直接读取和使用。
 
+## 一键安装
+
+### Kimi（vercel-labs/skills 生态）
+
+安装全部 Skill（项目级）：
+
+```bash
+npx skills add zingxy/skills -y
+```
+
+安装到全局（所有项目可用）：
+
+```bash
+npx skills add zingxy/skills -g -y
+```
+
+只安装指定 Skill：
+
+```bash
+npx skills add zingxy/skills --skill brainstorming -y
+```
+
+### Claude Code（Plugin / Marketplace）
+
+方式一：通过 Marketplace 安装
+
+```text
+/plugin marketplace add zingxy/skills
+/plugin install workflow-skills@zingxy-skills
+```
+
+方式二：本地目录直接安装
+
+```bash
+claude plugin install /path/to/this/repo
+```
+
+安装完成后，Claude 会自动识别 `skills/` 下的 `SKILL.md`。
+
 ## 目录结构
 
 ```text

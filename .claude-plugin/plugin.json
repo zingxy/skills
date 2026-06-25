@@ -1,0 +1,10 @@
+{
+  "name": "workflow-skills",
+  "version": "1.0.0",
+  "description": "Reusable agent skills for structured software workflows: brainstorming, writing implementation plans, and executing plans with checkpoints.",
+  "author": {
+    "name": "zingxy",
+    "url": "https://github.com/zingxy"
+  },
+  "homepage": "https://github.com/zingxy/skills"
+}

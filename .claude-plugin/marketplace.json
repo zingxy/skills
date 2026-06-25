@@ -1,0 +1,25 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "zingxy-skills",
+  "description": "Reusable agent skills for structured software workflows: brainstorming, plan writing, and plan execution.",
+  "owner": {
+    "name": "zingxy",
+    "url": "https://github.com/zingxy"
+  },
+  "plugins": [
+    {
+      "name": "workflow-skills",
+      "source": "./",
+      "description": "Three reusable skills that enforce a structured build flow: brainstorm before designing, write plans before coding, execute with checkpoints.",
+      "version": "1.0.0",
+      "author": {
+        "name": "zingxy",
+        "url": "https://github.com/zingxy"
+      },
+      "homepage": "https://github.com/zingxy/skills",
+      "license": "UNLICENSED",
+      "category": "development",
+      "keywords": ["skills", "workflow", "brainstorming", "planning", "execution"]
+    }
+  ]
+}

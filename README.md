@@ -81,21 +81,37 @@ description: You MUST use this before any creative work...
 | `writing-plans` | 将已确认的设计文档拆成可逐步执行的任务清单 | 设计已批准、准备开始写代码之前 |
 | `executing-plans` | 按已有计划逐步执行、验证、交付 | 已有实施计划，需要进入执行阶段 |
 
+## 命名空间
+
+插件 ID 为 `qing`，安装后所有 Skill 以 `qing:<skill-name>` 的形式引用：
+
+| 引用 | 对应 Skill |
+| --- | --- |
+| `qing:brainstorming` | 头脑风暴与需求澄清 |
+| `qing:writing-plans` | 撰写实施计划 |
+| `qing:executing-plans` | 执行计划 |
+
+典型调用链：
+
+```text
+qing:brainstorming → qing:writing-plans → qing:executing-plans
+```
+
 ## 各客户端如何使用
 
 ### Kimi
 
-Kimi 会自动把 `skills/` 目录下的 `SKILL.md` 识别为**项目级 Skill**。在相关任务开始时，直接调用对应 Skill 即可。
+Kimi 会自动把 `skills/` 目录下的 `SKILL.md` 识别为**项目级 Skill**。以 Plugin 形式安装后，可通过命名空间显式调用，例如 `qing:brainstorming`。
 
 调用链示例：
 
 ```text
-brainstorming → writing-plans → executing-plans
+qing:brainstorming → qing:writing-plans → qing:executing-plans
 ```
 
 ### Claude
 
-Claude 通过项目根目录的 `.claude/CLAUDE.md` 了解本仓库的 Skill 体系。打开项目后，Claude 会根据任务类型读取 `skills/<name>/SKILL.md` 并按其流程执行。
+Claude 通过项目根目录的 `.claude/CLAUDE.md` 了解本仓库的 Skill 体系。以 Plugin 形式安装后，可通过 `qing:<skill-name>` 显式调用，例如 `/skill:qing:brainstorming`。
 
 ### 其他工具 / 手动使用
 

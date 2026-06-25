@@ -8,7 +8,7 @@
   },
   "plugins": [
     {
-      "name": "workflow-skills",
+      "name": "qing",
       "source": "./",
       "description": "Three reusable skills that enforce a structured build flow: brainstorm before designing, write plans before coding, execute with checkpoints.",
       "version": "1.0.0",

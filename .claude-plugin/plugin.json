@@ -1,5 +1,5 @@
 {
-  "name": "workflow-skills",
+  "name": "qing",
   "version": "1.0.0",
   "description": "Reusable agent skills for structured software workflows: brainstorming, writing implementation plans, and executing plans with checkpoints.",
   "author": {

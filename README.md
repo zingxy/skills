@@ -42,7 +42,7 @@ npx skills add zingxy/skills --skill brainstorming -y
 
 ```text
 /plugin marketplace add zingxy/skills
-/plugin install workflow-skills@zingxy-skills
+/plugin install qing@zingxy-skills
 ```
 
 方式二：本地目录直接安装

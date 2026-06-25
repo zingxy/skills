@@ -1,5 +1,5 @@
 {
-  "name": "workflow-skills",
+  "name": "qing",
   "version": "1.0.0",
   "description": "Reusable agent skills for structured software workflows: brainstorming, writing implementation plans, and executing plans with checkpoints.",
   "author": {
@@ -16,7 +16,7 @@
     "execution"
   ],
   "skills": "./skills/",
-  "skillInstructions": "Kimi Code tool mapping for workflow-skills:\n\n- When a skill says to create todos, mark tasks in_progress, or mark tasks completed, use Kimi Code's `TodoList` tool.\n- When a skill says to dispatch a subagent or asks for a review subagent, use Kimi Code's `Agent` tool with `subagent_type: \"coder\"` for implementation/review tasks, or `subagent_type: \"explore\"` for read-only codebase exploration.\n- When a skill says to invoke another skill (e.g. writing-plans, executing-plans), use Kimi Code's native `Skill` tool.\n- When a skill says to ask clarifying questions, ask one question at a time, or present multiple-choice options, use Kimi Code's `AskUserQuestion` tool.\n- For file operations, use Kimi Code's `Read`, `Write`, `Edit`, `Glob`, and `Grep` tools by their actual names.\n- For shell commands, use the `Bash` tool.\n- For web search or fetching URLs, use `WebSearch` or `FetchURL` respectively.",
+  "skillInstructions": "Kimi Code tool mapping for qing:\n\n- When a skill says to create todos, mark tasks in_progress, or mark tasks completed, use Kimi Code's `TodoList` tool.\n- When a skill says to dispatch a subagent or asks for a review subagent, use Kimi Code's `Agent` tool with `subagent_type: \"coder\"` for implementation/review tasks, or `subagent_type: \"explore\"` for read-only codebase exploration.\n- When a skill says to invoke another skill (e.g. writing-plans, executing-plans), use Kimi Code's native `Skill` tool.\n- When a skill says to ask clarifying questions, ask one question at a time, or present multiple-choice options, use Kimi Code's `AskUserQuestion` tool.\n- For file operations, use Kimi Code's `Read`, `Write`, `Edit`, `Glob`, and `Grep` tools by their actual names.\n- For shell commands, use the `Bash` tool.\n- For web search or fetching URLs, use `WebSearch` or `FetchURL` respectively.",
   "interface": {
     "displayName": "Workflow Skills",
     "shortDescription": "Structured brainstorm → plan → execute skills",

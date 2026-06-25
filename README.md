@@ -4,15 +4,27 @@
 
 ## 一键安装
 
-### Kimi（vercel-labs/skills 生态）
+### Kimi Code CLI（原生 Plugin）
 
-安装全部 Skill（项目级）：
+```bash
+kimi plugin install https://github.com/zingxy/skills.git
+```
+
+或在 Kimi Code CLI TUI 中：
+
+```text
+/plugins install https://github.com/zingxy/skills
+```
+
+安装后执行 `/reload` 或 `/new` 使 Skill 生效。
+
+### Kimi / Claude / 其他代理（vercel-labs/skills 生态）
 
 ```bash
 npx skills add zingxy/skills -y
 ```
 
-安装到全局（所有项目可用）：
+全局安装：
 
 ```bash
 npx skills add zingxy/skills -g -y

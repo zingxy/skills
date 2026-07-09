@@ -20,12 +20,27 @@
       "tags": ["planning", "implementation", "tasks"]
     },
     {
-      "name": "executing-plans",
-      "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints.",
-      "path": "skills/executing-plans/SKILL.md",
-      "when": "When a written implementation plan exists and needs to be executed.",
+      "name": "wiki-ingest",
+      "description": "Ingest material into the LLM Wiki at ~/writing/llm-wiki, creating atomic concept pages and wikilinks.",
+      "path": "skills/wiki-ingest/SKILL.md",
+      "when": "When the user wants to ingest material into the LLM Wiki.",
       "next": [],
-      "tags": ["execution", "implementation", "verification"]
+      "tags": ["wiki", "ingest", "knowledge"]
+    },
+    {
+      "name": "wiki-lint",
+      "description": "Lint the health of the LLM Wiki at ~/writing/llm-wiki and fix issues after confirmation.",
+      "path": "skills/wiki-lint/SKILL.md",
+      "when": "When the user wants to check or clean up the LLM Wiki.",
+      "next": [],
+      "tags": ["wiki", "lint", "knowledge"]
+    },
+    {
+      "name": "wiki-query",
+      "description": "Query the LLM Wiki at ~/writing/llm-wiki and synthesize answers, optionally backfilling knowledge.",
+      "path": "skills/wiki-query/SKILL.md",
+      "when": "When the user wants to query the LLM Wiki for knowledge.",
+      "next": [],
+      "tags": ["wiki", "query", "knowledge"]
     }
-  ]
 }

@@ -17,6 +17,9 @@ This repository contains reusable agent skills in the `skills/` directory. Each 
 | `brainstorming` | User wants to create a feature, build a component, add functionality, or modify behavior. | Read `skills/brainstorming/SKILL.md`. Explore requirements, propose approaches, write a design spec, and get explicit user approval before any implementation. |
 | `writing-plans` | A design/spec exists and the user is ready to plan implementation. | Read `skills/writing-plans/SKILL.md`. Produce a detailed, bite-sized implementation plan with exact files, commands, and expected outputs. |
 | `executing-plans` | A written implementation plan exists and the user wants it executed. | Read `skills/executing-plans/SKILL.md`. Execute tasks in order, verify each step, stop and ask when blocked. |
+| `wiki-ingest` | User wants to ingest material into the LLM Wiki. | Read `skills/wiki-ingest/SKILL.md`. Distill source material into atomic pages, maintain wikilinks, and leave provenance. |
+| `wiki-lint` | User wants to check or clean up the LLM Wiki. | Read `skills/wiki-lint/SKILL.md`. Audit health, report issues, and fix after confirmation. |
+| `wiki-query` | User wants to query the LLM Wiki. | Read `skills/wiki-query/SKILL.md`. Search pages, synthesize answers, and backfill new knowledge into the wiki. |
 
 ## Default workflow
 

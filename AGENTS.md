@@ -16,6 +16,9 @@ This repository is a collection of reusable agent skills for AI assistants such 
 | `brainstorming` | Before any creative, implementation, or behavior-changing work. Use it to explore intent, constraints, and design, then get user approval before writing code. | `writing-plans` |
 | `writing-plans` | After a spec/design is approved and before any code is touched. Use it to produce a detailed, step-by-step implementation plan. | `executing-plans` |
 | `executing-plans` | When a written implementation plan exists and you need to execute it in a focused session. | — |
+| `wiki-ingest` | When the user wants to ingest material into the LLM Wiki at `~/writing/llm-wiki`. | — |
+| `wiki-lint` | When the user wants to check or clean up the LLM Wiki. | — |
+| `wiki-query` | When the user wants to query the LLM Wiki for knowledge. | — |
 
 ## How to use these skills
 

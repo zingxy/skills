@@ -60,6 +60,9 @@ skills/
 ├── brainstorming/          # 创意/设计前的头脑风暴与需求澄清
 ├── executing-plans/        # 按已有实施计划执行开发
 ├── writing-plans/          # 根据设计文档撰写可执行的实施计划
+├── wiki-ingest/            # 将素材沉淀到 LLM Wiki
+├── wiki-lint/              # 巡检 LLM Wiki 健康度
+├── wiki-query/             # 查询 LLM Wiki 并综合答案
 ├── manifest.json           # 机器可读的 Skill 清单
 └── ...
 ```
@@ -80,6 +83,9 @@ description: You MUST use this before any creative work...
 | `brainstorming` | 把模糊想法变成明确设计/规格，并在动手前获得用户确认 | 任何创造性、实现性、修改性行为之前 |
 | `writing-plans` | 将已确认的设计文档拆成可逐步执行的任务清单 | 设计已批准、准备开始写代码之前 |
 | `executing-plans` | 按已有计划逐步执行、验证、交付 | 已有实施计划，需要进入执行阶段 |
+| `wiki-ingest` | 把素材蒸馏沉淀到 LLM Wiki，维护原子概念页和 [[wikilink]] | 用户说“沉淀到 wiki / 整理进 wiki / 记一下 / ingest 到 llm-wiki” |
+| `wiki-lint` | 体检 LLM Wiki 的一致性，修复矛盾、缺失链接、重复等问题 | 用户说“巡检 wiki / lint wiki / 检查知识库一致性” |
+| `wiki-query` | 在 LLM Wiki 中检索并综合答案，必要时回填新结论 | 用户说“查 wiki / 在知识库里找 / query wiki” |
 
 ## 命名空间
 
@@ -90,6 +96,9 @@ description: You MUST use this before any creative work...
 | `qing:brainstorming` | 头脑风暴与需求澄清 |
 | `qing:writing-plans` | 撰写实施计划 |
 | `qing:executing-plans` | 执行计划 |
+| `qing:wiki-ingest` | 将素材沉淀到 LLM Wiki |
+| `qing:wiki-lint` | 巡检 LLM Wiki |
+| `qing:wiki-query` | 查询 LLM Wiki |
 
 典型调用链：
 

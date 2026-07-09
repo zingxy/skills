@@ -1,7 +1,7 @@
 {
   "name": "qing",
   "version": "1.0.0",
-  "description": "Reusable agent skills for structured software workflows: brainstorming, writing implementation plans, and executing plans with checkpoints.",
+  "description": "Reusable agent skills for structured software workflows and LLM Wiki operations: brainstorming, writing implementation plans, executing plans with checkpoints, and wiki ingest/query/lint.",
   "author": {
     "name": "zingxy",
     "url": "https://github.com/zingxy"
@@ -13,14 +13,19 @@
     "workflow",
     "brainstorming",
     "planning",
-    "execution"
+    "execution",
+    "wiki",
+    "knowledge",
+    "ingest",
+    "query",
+    "lint"
   ],
   "skills": "./skills/",
   "skillInstructions": "Kimi Code tool mapping for qing:\n\n- When a skill says to create todos, mark tasks in_progress, or mark tasks completed, use Kimi Code's `TodoList` tool.\n- When a skill says to dispatch a subagent or asks for a review subagent, use Kimi Code's `Agent` tool with `subagent_type: \"coder\"` for implementation/review tasks, or `subagent_type: \"explore\"` for read-only codebase exploration.\n- When a skill says to invoke another skill (e.g. writing-plans, executing-plans), use Kimi Code's native `Skill` tool.\n- When a skill says to ask clarifying questions, ask one question at a time, or present multiple-choice options, use Kimi Code's `AskUserQuestion` tool.\n- For file operations, use Kimi Code's `Read`, `Write`, `Edit`, `Glob`, and `Grep` tools by their actual names.\n- For shell commands, use the `Bash` tool.\n- For web search or fetching URLs, use `WebSearch` or `FetchURL` respectively.",
   "interface": {
-    "displayName": "Workflow Skills",
-    "shortDescription": "Structured brainstorm → plan → execute skills",
-    "longDescription": "A minimal workflow skillset: brainstorm and spec before coding, write bite-sized implementation plans, and execute plans with verification checkpoints.",
+    "displayName": "Workflow & Wiki Skills",
+    "shortDescription": "Structured workflow skills and LLM Wiki operations",
+    "longDescription": "A workflow and LLM Wiki skillset: brainstorm and spec before coding, write bite-sized implementation plans, execute plans with verification checkpoints, and ingest, query, and lint the LLM Wiki.",
     "developerName": "zingxy",
     "websiteURL": "https://github.com/zingxy/skills"
   }

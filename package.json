@@ -8,6 +8,7 @@
   },
   "packageManager": "pnpm@10.33.2",
   "scripts": {
+    "bump": "node scripts/bump-version.mjs",
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",
     "lint": "pnpm -r run lint"

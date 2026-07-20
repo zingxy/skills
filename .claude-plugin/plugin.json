@@ -1,6 +1,6 @@
 {
-  "name": "qing",
-  "version": "1.2.0",
+  "name": "skills",
+  "version": "2.0.0",
   "description": "Reusable agent skills for structured software workflows and LLM Wiki operations: brainstorming, writing implementation plans, executing plans with checkpoints, and wiki ingest/query/lint.",
   "author": {
     "name": "zingxy",

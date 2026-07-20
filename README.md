@@ -36,16 +36,9 @@ npx skills add zingxy/skills -g -y
 npx skills add zingxy/skills --skill brainstorming -y
 ```
 
-### Claude Code（Plugin / Marketplace）
+### Claude Code（Plugin）
 
-方式一：通过 Marketplace 安装
-
-```text
-/plugin marketplace add zingxy/skills
-/plugin install qing@zingxy-skills
-```
-
-方式二：本地目录直接安装
+本地目录直接安装：
 
 ```bash
 claude plugin install /path/to/this/repo
@@ -89,38 +82,38 @@ description: You MUST use this before any creative work...
 
 ## 命名空间
 
-插件 ID 为 `qing`，安装后所有 Skill 以 `qing:<skill-name>` 的形式引用：
+插件 ID 为 `skills`（与仓库名一致），安装后所有 Skill 以 `skills:<skill-name>` 的形式引用：
 
 | 引用 | 对应 Skill |
 | --- | --- |
-| `qing:brainstorming` | 头脑风暴与需求澄清 |
-| `qing:writing-plans` | 撰写实施计划 |
-| `qing:executing-plans` | 执行计划 |
-| `qing:wiki-ingest` | 将素材沉淀到 LLM Wiki |
-| `qing:wiki-lint` | 巡检 LLM Wiki |
-| `qing:wiki-query` | 查询 LLM Wiki |
+| `skills:brainstorming` | 头脑风暴与需求澄清 |
+| `skills:writing-plans` | 撰写实施计划 |
+| `skills:executing-plans` | 执行计划 |
+| `skills:wiki-ingest` | 将素材沉淀到 LLM Wiki |
+| `skills:wiki-lint` | 巡检 LLM Wiki |
+| `skills:wiki-query` | 查询 LLM Wiki |
 
 典型调用链：
 
 ```text
-qing:brainstorming → qing:writing-plans → qing:executing-plans
+skills:brainstorming → skills:writing-plans → skills:executing-plans
 ```
 
 ## 各客户端如何使用
 
 ### Kimi
 
-Kimi 会自动把 `skills/` 目录下的 `SKILL.md` 识别为**项目级 Skill**。以 Plugin 形式安装后，可通过命名空间显式调用，例如 `qing:brainstorming`。
+Kimi 会自动把 `skills/` 目录下的 `SKILL.md` 识别为**项目级 Skill**。以 Plugin 形式安装后，可通过命名空间显式调用，例如 `skills:brainstorming`。
 
 调用链示例：
 
 ```text
-qing:brainstorming → qing:writing-plans → qing:executing-plans
+skills:brainstorming → skills:writing-plans → skills:executing-plans
 ```
 
 ### Claude
 
-Claude 通过项目根目录的 `.claude/CLAUDE.md` 了解本仓库的 Skill 体系。以 Plugin 形式安装后，可通过 `qing:<skill-name>` 显式调用，例如 `/skill:qing:brainstorming`。
+Claude 通过项目根目录的 `.claude/CLAUDE.md` 了解本仓库的 Skill 体系。以 Plugin 形式安装后，可通过 `skills:<skill-name>` 显式调用，例如 `/skill:skills:brainstorming`。
 
 ### 其他工具 / 手动使用
 

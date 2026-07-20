@@ -1,0 +1,14 @@
+{
+  "name": "zingxy-skills",
+  "owner": {
+    "name": "zingxy",
+    "url": "https://github.com/zingxy"
+  },
+  "plugins": [
+    {
+      "name": "skills",
+      "source": "./",
+      "description": "Reusable skills for structured build flow and LLM Wiki operations: brainstorm, plan, execute; plus wiki ingest, query, and lint."
+    }
+  ]
+}

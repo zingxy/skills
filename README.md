@@ -36,13 +36,22 @@ npx skills add zingxy/skills -g -y
 npx skills add zingxy/skills --skill brainstorming -y
 ```
 
-### Claude Code（Plugin）
+### Claude Code（Plugin / Marketplace）
 
-本地目录直接安装：
+方式一：通过 Marketplace 安装（永久生效）
+
+```text
+/plugin marketplace add zingxy/skills
+/plugin install skills@zingxy-skills
+```
+
+方式二：本地开发 / 临时加载（无需安装）
 
 ```bash
-claude plugin install /path/to/this/repo
+claude --plugin-dir /path/to/this/repo
 ```
+
+修改 SKILL.md 后可在会话内用 `/reload-plugins` 热加载。
 
 安装完成后，Claude 会自动识别 `skills/` 下的 `SKILL.md`。
 

@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Machine-readable catalog of reusable agent skills in this repository.",
   "basePath": "skills",
   "skills": [
@@ -76,6 +76,18 @@
       "tags": [
         "wiki",
         "query",
+        "knowledge"
+      ]
+    },
+    {
+      "name": "wiki-html",
+      "description": "Build a self-contained interactive HTML page via the artifact-design workflow and archive it into the LLM Wiki's html/ directory with a companion page and log entry.",
+      "path": "skills/wiki-html/SKILL.md",
+      "when": "When the user wants an interactive HTML page produced for and archived into the LLM Wiki.",
+      "next": [],
+      "tags": [
+        "wiki",
+        "html",
         "knowledge"
       ]
     }

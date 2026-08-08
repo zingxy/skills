@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "description": "Machine-readable catalog of reusable agent skills in this plugin.",
+  "basePath": "skills",
+  "skills": [
+    {
+      "name": "wiki-html",
+      "description": "生成人类阅读的自包含 HTML 交互页(拖拽图示、动画演示、可调参数的可视化),走 artifact-design 设计工作流,并按约定沉淀进位于 ~/writing/llm-wiki 的 LLM Wiki 的 html/ 目录——建配套概念页、互链、记 log。当用户说\"做个交互页存进 wiki / 把这个主题做成 html 沉淀到知识库 / wiki html / 给 wiki 做个可视化页面 / 把刚才的演示页收进 wiki\"时使用;凡是产出 HTML 且归宿是 llm-wiki 的场景都应触发。",
+      "path": "skills/wiki-html/SKILL.md",
+      "when": "When the user wants an interactive HTML page produced for and archived into the LLM Wiki.",
+      "next": [],
+      "tags": [
+        "wiki",
+        "html",
+        "knowledge"
+      ]
+    },
+    {
+      "name": "wiki-ingest",
+      "description": "把素材(默认当前对话,也可文件/URL/文本,或个人知识库里的某篇笔记)蒸馏沉淀进位于 ~/writing/llm-wiki 的 LLM Wiki——拆成原子概念页、维护 [[wikilink]] 交叉引用、留 source 凭证、记 log;用个人笔记当素材时只读不改,产物只写进 llm-wiki。当用户说\"沉淀到 wiki / 整理进 wiki / 进知识库 / 把这段对话存进 wiki / 把某篇笔记整理进 wiki / ingest 到 llm-wiki / 记一下 / 整理成笔记 / 存档\"时使用。",
+      "path": "skills/wiki-ingest/SKILL.md",
+      "when": "When the user wants to ingest material into the LLM Wiki.",
+      "next": [],
+      "tags": [
+        "wiki",
+        "ingest",
+        "knowledge"
+      ]
+    },
+    {
+      "name": "wiki-lint",
+      "description": "体检位于 ~/writing/llm-wiki 的 LLM Wiki 健康度——找矛盾、过时声明、孤儿页、缺失的 [[wikilink]]、重复可合并的页,出简报并经确认后修复。当用户说\"巡检/体检 wiki / lint wiki / 检查知识库一致性 / 清理 llm-wiki\"时使用。",
+      "path": "skills/wiki-lint/SKILL.md",
+      "when": "When the user wants to check or clean up the LLM Wiki.",
+      "next": [],
+      "tags": [
+        "wiki",
+        "lint",
+        "knowledge"
+      ]
+    },
+    {
+      "name": "wiki-query",
+      "description": "在位于 ~/writing/llm-wiki 的 LLM Wiki 里检索并综合答案,引用来源页面,有价值的新结论回填成新页/更新页;需要时也可读个人知识库(vault 里 llm-wiki 之外的笔记)作补充参考,但只读不改。当用户说\"查 wiki / 在知识库里找 / 问问 wiki / 从 llm-wiki 里查 / query wiki\"时使用。这是查询 LLM Wiki(llm-wiki/)知识库,回填只写进 llm-wiki,不改个人笔记。",
+      "path": "skills/wiki-query/SKILL.md",
+      "when": "When the user wants to query the LLM Wiki for knowledge.",
+      "next": [],
+      "tags": [
+        "wiki",
+        "query",
+        "knowledge"
+      ]
+    }
+  ]
+}

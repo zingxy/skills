@@ -1,95 +1,26 @@
 {
-  "version": "2.1.0",
-  "description": "Machine-readable catalog of reusable agent skills in this repository.",
+  "description": "Machine-readable catalog of reusable agent skills in this plugin.",
   "basePath": "skills",
-  "skills": [
-    {
-      "name": "brainstorming",
-      "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
-      "path": "skills/brainstorming/SKILL.md",
-      "when": "Before any creative, implementation, or behavior-changing task.",
-      "next": [
-        "writing-plans"
-      ],
-      "tags": [
-        "design",
-        "requirements",
-        "spec"
-      ]
-    },
-    {
-      "name": "writing-plans",
-      "description": "Use when you have a spec or requirements for a multi-step task, before touching code.",
-      "path": "skills/writing-plans/SKILL.md",
-      "when": "After a spec/design is approved and before implementation begins.",
-      "next": [
-        "executing-plans"
-      ],
-      "tags": [
-        "planning",
-        "implementation",
-        "tasks"
-      ]
-    },
-    {
-      "name": "executing-plans",
-      "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints.",
-      "path": "skills/executing-plans/SKILL.md",
-      "when": "When a written implementation plan exists and the user wants it executed.",
-      "next": [],
-      "tags": [
-        "execution",
-        "verification",
-        "checkpoints"
-      ]
-    },
-    {
-      "name": "wiki-ingest",
-      "description": "Ingest material into the LLM Wiki at ~/writing/llm-wiki, creating atomic concept pages and wikilinks.",
-      "path": "skills/wiki-ingest/SKILL.md",
+  "skills": {
+    "wiki-ingest": {
       "when": "When the user wants to ingest material into the LLM Wiki.",
       "next": [],
-      "tags": [
-        "wiki",
-        "ingest",
-        "knowledge"
-      ]
+      "tags": ["wiki", "ingest", "knowledge"]
     },
-    {
-      "name": "wiki-lint",
-      "description": "Lint the health of the LLM Wiki at ~/writing/llm-wiki and fix issues after confirmation.",
-      "path": "skills/wiki-lint/SKILL.md",
+    "wiki-lint": {
       "when": "When the user wants to check or clean up the LLM Wiki.",
       "next": [],
-      "tags": [
-        "wiki",
-        "lint",
-        "knowledge"
-      ]
+      "tags": ["wiki", "lint", "knowledge"]
     },
-    {
-      "name": "wiki-query",
-      "description": "Query the LLM Wiki at ~/writing/llm-wiki and synthesize answers, optionally backfilling knowledge.",
-      "path": "skills/wiki-query/SKILL.md",
+    "wiki-query": {
       "when": "When the user wants to query the LLM Wiki for knowledge.",
       "next": [],
-      "tags": [
-        "wiki",
-        "query",
-        "knowledge"
-      ]
+      "tags": ["wiki", "query", "knowledge"]
     },
-    {
-      "name": "wiki-html",
-      "description": "Build a self-contained interactive HTML page via the artifact-design workflow and archive it into the LLM Wiki's html/ directory with a companion page and log entry.",
-      "path": "skills/wiki-html/SKILL.md",
+    "wiki-html": {
       "when": "When the user wants an interactive HTML page produced for and archived into the LLM Wiki.",
       "next": [],
-      "tags": [
-        "wiki",
-        "html",
-        "knowledge"
-      ]
+      "tags": ["wiki", "html", "knowledge"]
     }
-  ]
+  }
 }

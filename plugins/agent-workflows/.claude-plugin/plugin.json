@@ -1,10 +1,10 @@
 {
-  "name": "skills",
-  "version": "2.1.0",
-  "description": "Reusable agent skills for structured software workflows and LLM Wiki operations: brainstorming, writing implementation plans, executing plans with checkpoints, and wiki ingest/query/lint.",
+  "name": "agent-workflows",
+  "version": "1.0.0",
+  "description": "Reusable LLM Wiki operations for agent workflows.",
   "author": {
     "name": "zingxy",
     "url": "https://github.com/zingxy"
   },
-  "homepage": "https://github.com/zingxy/skills"
+  "homepage": "https://github.com/zingxy/agent-plugins"
 }

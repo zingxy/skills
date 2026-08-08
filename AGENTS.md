@@ -1,44 +1,25 @@
 # Project Instructions
 
-This repository is a collection of reusable agent skills for AI assistants such as Kimi and Claude.
+This repository is the `agent-plugins` marketplace. Codex is the primary distribution target; every installable plugin is a self-contained package under `plugins/<plugin-name>/`.
 
-## Skill layout
+## Marketplace layout
 
-- Each skill lives in `skills/<skill-name>/`.
-- The canonical definition is `skills/<skill-name>/SKILL.md`.
-- Skill metadata is in YAML frontmatter (`name`, `description`).
-- A machine-readable catalog is available at `skills/manifest.json`.
+- `.agents/plugins/marketplace.json` is generated from metadata in each `plugins/*/package.json`.
+- `plugins/<plugin-name>/package.json` is the only version and shared metadata source for that plugin.
+- `plugins/<plugin-name>/.codex-plugin/plugin.json`, `.kimi-plugin/plugin.json`, `.claude-plugin/plugin.json`, and `skills/manifest.json` are generated files. Do not hand-edit them.
+- `plugins/<plugin-name>/skills/catalog-metadata.json` is the editable source for catalog fields not present in `SKILL.md` frontmatter (`when`, `next`, and `tags`).
+- Skill content belongs only in `plugins/<plugin-name>/skills/`.
 
-## Available skills
+## Maintenance
 
-| Skill | When to invoke | Next skill |
-| --- | --- | --- |
-| `brainstorming` | Before any creative, implementation, or behavior-changing work. Use it to explore intent, constraints, and design, then get user approval before writing code. | `writing-plans` |
-| `writing-plans` | After a spec/design is approved and before any code is touched. Use it to produce a detailed, step-by-step implementation plan. | `executing-plans` |
-| `executing-plans` | When a written implementation plan exists and you need to execute it in a focused session. | — |
-| `wiki-ingest` | When the user wants to ingest material into the LLM Wiki at `~/writing/llm-wiki`. | — |
-| `wiki-lint` | When the user wants to check or clean up the LLM Wiki. | — |
-| `wiki-query` | When the user wants to query the LLM Wiki for knowledge. | — |
+When adding a plugin, use its normalized kebab-case name for its directory, package name, Codex manifest name, and marketplace entry. Add `agentPlugin.marketplace.category` to its package metadata.
 
-## How to use these skills
+Run these commands before handing off changes:
 
-1. At the start of a task, pick the skill that matches the current phase.
-2. Announce that you are using the skill, then follow the instructions in its `SKILL.md` exactly.
-3. Do not skip hard-gates or user-approval steps defined in the skill.
-4. When a skill says to invoke another skill, do so explicitly.
-
-## Skill chaining
-
-The default workflow for any new feature or significant change is:
-
-```text
-brainstorming → writing-plans → executing-plans
+```bash
+pnpm sync
+pnpm test
+pnpm check
 ```
 
-Do not combine phases unless the skill explicitly allows it.
-
-## Maintenance rules
-
-- Keep each skill self-contained and actionable.
-- Do not add implementation code to a skill file; only add instructions and examples.
-- When adding or renaming a skill, update `skills/manifest.json`, `README.md`, and `.claude/CLAUDE.md`.
+The repository owner must rename the remote GitHub repository separately when the public repository name changes.

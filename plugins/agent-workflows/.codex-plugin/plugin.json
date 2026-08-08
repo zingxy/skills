@@ -13,7 +13,6 @@
     "wiki"
   ],
   "skills": "./skills/",
-  "skillInstructions": "Kimi Code tool mapping for skills:\n\n- When a skill asks for task tracking, use Kimi Code's `TodoList` tool.\n- When a skill asks to delegate implementation, review, or exploration work, use Kimi Code's `Agent` tool with the appropriate subagent type.\n- When a skill asks to invoke another skill, use Kimi Code's native `Skill` tool.\n- When a skill asks clarifying questions, use Kimi Code's `AskUserQuestion` tool.\n- For file operations, use Kimi Code's `Read`, `Write`, `Edit`, `Glob`, and `Grep` tools by their actual names.\n- For shell commands, use the `Bash` tool.\n- For web search or fetching URLs, use `WebSearch` or `FetchURL` respectively.",
   "interface": {
     "displayName": "LLM Wiki Operations",
     "shortDescription": "LLM Wiki ingest, query, lint, and interactive HTML operations",

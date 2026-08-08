@@ -1,0 +1,41 @@
+{
+  "name": "agent-workflows",
+  "version": "1.0.0",
+  "description": "Reusable LLM Wiki operations for agent workflows.",
+  "private": true,
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=9"
+  },
+  "scripts": {
+    "sync": "node scripts/sync-plugin-manifests.mjs",
+    "check": "node scripts/check-plugin-manifests.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "bump": "node scripts/bump-version.mjs"
+  },
+  "agentPlugin": {
+    "author": {
+      "name": "zingxy",
+      "url": "https://github.com/zingxy"
+    },
+    "homepage": "https://github.com/zingxy/agent-plugins",
+    "license": "UNLICENSED",
+    "keywords": [
+      "agent",
+      "wiki"
+    ],
+    "interface": {
+      "displayName": "LLM Wiki Operations",
+      "shortDescription": "LLM Wiki ingest, query, lint, and interactive HTML operations",
+      "longDescription": "Reusable LLM Wiki operations for ingesting, querying, linting, and creating interactive HTML artifacts.",
+      "developerName": "zingxy",
+      "websiteURL": "https://github.com/zingxy/agent-plugins"
+    },
+    "marketplace": {
+      "category": "Productivity"
+    },
+    "kimi": {
+      "skillInstructions": "Kimi Code tool mapping for skills:\n\n- When a skill asks for task tracking, use Kimi Code's `TodoList` tool.\n- When a skill asks to delegate implementation, review, or exploration work, use Kimi Code's `Agent` tool with the appropriate subagent type.\n- When a skill asks to invoke another skill, use Kimi Code's native `Skill` tool.\n- When a skill asks clarifying questions, use Kimi Code's `AskUserQuestion` tool.\n- For file operations, use Kimi Code's `Read`, `Write`, `Edit`, `Glob`, and `Grep` tools by their actual names.\n- For shell commands, use the `Bash` tool.\n- For web search or fetching URLs, use `WebSearch` or `FetchURL` respectively."
+    }
+  }
+}

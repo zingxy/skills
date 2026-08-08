@@ -1,14 +1,14 @@
 {
-  "name": "zingxy-skills",
+  "name": "agent-plugins",
   "owner": {
     "name": "zingxy",
     "url": "https://github.com/zingxy"
   },
   "plugins": [
     {
-      "name": "skills",
-      "source": "./",
-      "description": "Reusable skills for structured build flow and LLM Wiki operations: brainstorm, plan, execute; plus wiki ingest, query, and lint."
+      "name": "agent-workflows",
+      "source": "./plugins/agent-workflows",
+      "description": "Reusable LLM Wiki operations for ingesting, querying, linting, and interactive HTML artifacts."
     }
   ]
 }

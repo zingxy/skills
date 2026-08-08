@@ -1,141 +1,90 @@
-# AI Agent Skills
+# Agent Plugins
 
-这个仓库维护一组可复用的 Agent Skill，供 **Kimi**、**Claude** 等 AI 助手直接读取和使用。
+`agent-plugins` 是一个以 Codex 为优先的个人 Agent Plugin marketplace。每个插件都位于 `plugins/<plugin-name>/`，拥有独立版本、Skill 内容、三端清单与测试。
 
-## 一键安装
+## 插件目录
 
-### Kimi Code CLI（原生 Plugin）
+| 插件 | 说明 | Codex 安装引用 |
+| --- | --- | --- |
+| `agent-workflows` | LLM Wiki 操作 | `agent-workflows@agent-plugins` |
+
+## 安装
+
+### Codex
+
+在远程仓库重命名为 `zingxy/agent-plugins` 后，添加 marketplace 并安装插件：
 
 ```bash
-kimi plugin install https://github.com/zingxy/skills.git
+codex plugin marketplace add zingxy/agent-plugins
+codex plugin add agent-workflows@agent-plugins
 ```
 
-或在 Kimi Code CLI TUI 中：
+Codex marketplace 清单位于 [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json)，并指向 `plugins/agent-workflows`。
+
+### Claude Code
+
+将本仓库作为 Claude marketplace，然后安装其中的插件：
 
 ```text
-/plugins install https://github.com/zingxy/skills
+/plugin marketplace add zingxy/agent-plugins
+/plugin install agent-workflows@agent-plugins
 ```
 
-安装后执行 `/reload` 或 `/new` 使 Skill 生效。
-
-### Kimi / Claude / 其他代理（vercel-labs/skills 生态）
+本地开发时可直接加载插件目录：
 
 ```bash
-npx skills add zingxy/skills -y
+claude --plugin-dir /path/to/agent-plugins/plugins/agent-workflows
 ```
 
-全局安装：
+### Kimi Code CLI
+
+Kimi 的远程安装器无法选择 Git 仓库中的子目录时，先 clone 仓库，再从插件目录安装：
 
 ```bash
-npx skills add zingxy/skills -g -y
+git clone https://github.com/zingxy/agent-plugins.git
+kimi plugin install /path/to/agent-plugins/plugins/agent-workflows
 ```
-
-只安装指定 Skill：
-
-```bash
-npx skills add zingxy/skills --skill brainstorming -y
-```
-
-### Claude Code（Plugin / Marketplace）
-
-方式一：通过 Marketplace 安装（永久生效）
-
-```text
-/plugin marketplace add zingxy/skills
-/plugin install skills@zingxy-skills
-```
-
-方式二：本地开发 / 临时加载（无需安装）
-
-```bash
-claude --plugin-dir /path/to/this/repo
-```
-
-修改 SKILL.md 后可在会话内用 `/reload-plugins` 热加载。
-
-安装完成后，Claude 会自动识别 `skills/` 下的 `SKILL.md`。
 
 ## 目录结构
 
 ```text
-skills/
-├── brainstorming/          # 创意/设计前的头脑风暴与需求澄清
-├── executing-plans/        # 按已有实施计划执行开发
-├── writing-plans/          # 根据设计文档撰写可执行的实施计划
-├── wiki-ingest/            # 将素材沉淀到 LLM Wiki
-├── wiki-lint/              # 巡检 LLM Wiki 健康度
-├── wiki-query/             # 查询 LLM Wiki 并综合答案
-├── manifest.json           # 机器可读的 Skill 清单
-└── ...
+agent-plugins/
+├── .agents/plugins/marketplace.json  # Codex 生成目录
+├── .claude-plugin/marketplace.json   # Claude 目录
+├── plugins/
+│   └── agent-workflows/               # 独立插件包
+│       ├── .codex-plugin/plugin.json
+│       ├── .kimi-plugin/plugin.json
+│       ├── .claude-plugin/plugin.json
+│       ├── skills/
+│       ├── scripts/
+│       └── package.json
+├── scripts/                           # marketplace 生成与检查
+└── package.json                       # workspace 聚合命令
 ```
 
-每个 Skill 是一个独立目录，核心文件是 `SKILL.md`，采用 YAML frontmatter 描述元信息：
+`plugins/agent-workflows/skills/` 是现有 Skill 的唯一内容来源；不要在仓库根复制或创建第二个 `skills/` 目录。
 
-```markdown
----
-name: brainstorming
-description: You MUST use this before any creative work...
----
+## 维护
+
+根目录命令管理全部插件与 marketplace：
+
+```bash
+pnpm sync
+pnpm test
+pnpm check
 ```
 
-## 现有 Skill 一览
+维护单个插件时，从其目录运行：
 
-| Skill | 用途 | 触发时机 |
-| --- | --- | --- |
-| `brainstorming` | 把模糊想法变成明确设计/规格，并在动手前获得用户确认 | 任何创造性、实现性、修改性行为之前 |
-| `writing-plans` | 将已确认的设计文档拆成可逐步执行的任务清单 | 设计已批准、准备开始写代码之前 |
-| `executing-plans` | 按已有计划逐步执行、验证、交付 | 已有实施计划，需要进入执行阶段 |
-| `wiki-ingest` | 把素材蒸馏沉淀到 LLM Wiki，维护原子概念页和 [[wikilink]] | 用户说“沉淀到 wiki / 整理进 wiki / 记一下 / ingest 到 llm-wiki” |
-| `wiki-lint` | 体检 LLM Wiki 的一致性，修复矛盾、缺失链接、重复等问题 | 用户说“巡检 wiki / lint wiki / 检查知识库一致性” |
-| `wiki-query` | 在 LLM Wiki 中检索并综合答案，必要时回填新结论 | 用户说“查 wiki / 在知识库里找 / query wiki” |
-
-## 命名空间
-
-插件 ID 为 `skills`（与仓库名一致），安装后所有 Skill 以 `skills:<skill-name>` 的形式引用：
-
-| 引用 | 对应 Skill |
-| --- | --- |
-| `skills:brainstorming` | 头脑风暴与需求澄清 |
-| `skills:writing-plans` | 撰写实施计划 |
-| `skills:executing-plans` | 执行计划 |
-| `skills:wiki-ingest` | 将素材沉淀到 LLM Wiki |
-| `skills:wiki-lint` | 巡检 LLM Wiki |
-| `skills:wiki-query` | 查询 LLM Wiki |
-
-典型调用链：
-
-```text
-skills:brainstorming → skills:writing-plans → skills:executing-plans
+```bash
+pnpm --dir plugins/agent-workflows sync
+pnpm --dir plugins/agent-workflows test
+pnpm --dir plugins/agent-workflows check
+pnpm --dir plugins/agent-workflows bump minor
 ```
 
-## 各客户端如何使用
-
-### Kimi
-
-Kimi 会自动把 `skills/` 目录下的 `SKILL.md` 识别为**项目级 Skill**。以 Plugin 形式安装后，可通过命名空间显式调用，例如 `skills:brainstorming`。
-
-调用链示例：
-
-```text
-skills:brainstorming → skills:writing-plans → skills:executing-plans
-```
-
-### Claude
-
-Claude 通过项目根目录的 `.claude/CLAUDE.md` 了解本仓库的 Skill 体系。以 Plugin 形式安装后，可通过 `skills:<skill-name>` 显式调用，例如 `/skill:skills:brainstorming`。
-
-### 其他工具 / 手动使用
-
-如果你使用的 AI 工具支持自定义提示词，可直接复制对应 `SKILL.md` 的内容作为系统提示。机器可读清单见：
-
-- [`skills/manifest.json`](skills/manifest.json)
-
-## 添加新 Skill
-
-1. 在 `skills/` 下新建目录，目录名即 Skill 名（kebab-case）。
-2. 创建 `SKILL.md`，顶部必须包含 `name` 和 `description` frontmatter。
-3. 在 `skills/manifest.json` 中补充该 Skill 的元数据。
-4. 更新本 README 与 `.claude/CLAUDE.md` / `AGENTS.md` 中的 Skill 列表。
+新增插件时，在 `plugins/` 创建一个与插件名相同的目录，并让目录名、子包 `package.json#name`、`.codex-plugin/plugin.json#name` 保持一致。根 marketplace 会在 `pnpm sync` 时自动发现并登记它。
 
 ## 许可证
 

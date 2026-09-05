@@ -23,7 +23,7 @@
       "tags": ["wiki", "html", "knowledge"]
     },
     "design-system": {
-      "when": "Loaded by HTML-producing skills (graphics-teach, wiki-html) before building a page; provides shared tokens, lucide icons, and scenario templates (graphic, log-review); not triggered by user requests directly.",
+      "when": "Loaded by HTML-producing skills (graphics-teach, wiki-html) before building a page; provides shared tokens, lucide icons, and scenario templates (graphic, code-data, log-review); not triggered by user requests directly.",
       "next": [],
       "tags": ["html", "design", "tokens", "templates"]
     },

@@ -1,6 +1,6 @@
 ---
 name: design-system
-description: 所有 HTML 交互页共享的视觉语言与设计 tokens 单一事实源——奶油纸面 + 珊瑚色 + 深色产品表面的三色体系、衬线展示字体、lucide 图标,外加场景模板(graphic 教学页、log-review 日志排查)。由产出 HTML 的技能(graphics-teach、wiki-html 等)在动手前加载;不直接响应用户请求。
+description: 所有 HTML 交互页共享的视觉语言与设计 tokens 单一事实源——奶油纸面 + 珊瑚色 + 深色产品表面的三色体系、衬线展示字体、lucide 图标,外加场景模板(graphic 教学页、code-data 伪数据/代码联动页、log-review 日志排查)与表达形式选择指南。由产出 HTML 的技能(graphics-teach、wiki-html 等)在动手前加载;不直接响应用户请求。
 ---
 
 # design-system
@@ -9,14 +9,17 @@ description: 所有 HTML 交互页共享的视觉语言与设计 tokens 单一�
 
 视觉身份:**奶油纸面(cream)+ 珊瑚色品牌电压(coral)+ 深色产品表面(dark surface)**,衬线展示标题配人文无衬线正文——editorial 杂志感,不是 SaaS 模板感,更不是冷灰蓝的"又一个 AI 工具"。
 
-## 场景模板
+## 场景模板:表达形式选择
 
-本文件只定义 tokens 与跨场景规则。**页面模式按场景选模板**,构建页面前先读对应文件:
+本文件只定义 tokens 与跨场景规则;模板只管**页面形态**(骨架、控件、版式、联动规则),**讲解策略**(概念分析、讲解手法)归调用模板的场景技能(graphics-teach 等)。**构建页面前先做表达形式选择**——问"这个概念的最小例子是什么":
 
-| 模板 | 文件 | 适用场景 |
-|---|---|---|
-| graphic | `templates/graphic.md` | 概念讲解/教学演示页——图形、动画、可调参数是主角 |
-| log-review | `templates/log-review.md` | 日志排查/故障复盘页——时间线是主角 |
+| 概念的核心对象 | 最小例子 | 模板 | 文件 |
+|---|---|---|---|
+| 可见的形、运动、空间关系(变换、曲线、光照) | 一张会动的图 | graphic | `templates/graphic.md` |
+| 数据的排列、对齐、流动(顶点属性、内存布局、协议字段、执行栈) | 一小段具体数据 + 几行代码 | code-data | `templates/code-data.md` |
+| 事件的时间序列(故障排查、请求链路、部署) | 一串带时间戳的事件 | log-review | `templates/log-review.md` |
+
+判断信号:如果你想画的"图"其实只是装饰、真正的内容全在注释里,说明**表格本身就是可视化**——用 code-data,不要硬画 canvas。形式可组合:主体一种模板,结尾可补另一种(比如数据联动页末尾贴一张渲染结果图)。
 
 新场景先套已有模板;都不合身时才新增模板文件,并在上表登记。
 

@@ -5,11 +5,11 @@ description: 生成沉浸式交互教学页来讲解图形学/渲染/游戏引�
 
 # graphics-teach
 
-把一个图形学概念**讲清楚**——讲到读者"啊,原来如此"——并做成能动手玩的教学页。核心目标是解释清楚,交互和动画都是手段。
+把一个图形学概念**讲清楚**——讲到读者"啊,原来如此"——并做成能动手玩的教学页。核心目标是解释清楚,交互和动画都是手段。页面形态(骨架、控件、版式)以 design-system 的场景模板为准,本技能只管讲解策略。
 
 ## 构建前:概念分析
 
-**加载 `design-system` 技能及其 `templates/graphic.md` 模板**,视觉以它们为准。然后先想清楚(几句话,不必成文):
+**加载 `design-system` 技能**,先做「表达形式选择」——图形/空间关系为主用 `templates/graphic.md`,数据的排列与流动为主(如顶点属性、buffer 布局)用 `templates/code-data.md`;视觉以所选模板为准。然后先想清楚(几句话,不必成文):
 
 - **它解决什么问题**:从什么问题或反常现象切入,读者才会觉得"这个概念值得被发明"?这就是页面的开头。
 - **核心困惑**:学这个概念时最容易卡住的点是什么(反直觉处、常见误解)?整页围绕攻破它设计,不是平均铺开。
@@ -47,7 +47,7 @@ description: 生成沉浸式交互教学页来讲解图形学/渲染/游戏引�
 
 - 首次使用 scaffold 一个 `graphics-lab` 工程(`pnpm create vite`);此后**每个新概念作为工程里的一个新页面**加入,共享侧边导航、tokens 和组件,不复制脚手架。
 - **渲染库固定:2D 用 PixiJS,3D 用 Three.js(配 OrbitControls)**——不手写原生 WebGL/Canvas 绘图。唯一例外:概念本身就是"Canvas 2D / WebGL 底层 API 原理"时,原生 API 是教学对象,才手写。**动画用 GSAP(或 anime.js)**:相机飞行、分步过渡、数值 tween 都交给它,不手写补间。公式可 KaTeX,状态简单就用 React state。
-- 视觉规范(tokens、控件、reduced-motion)按 design-system 的「交付模式 B」与 graphic 模板。
+- 视觉规范(tokens、控件、reduced-motion)按 design-system 的「交付模式 B」与所选场景模板。
 - 2D 概念用 Canvas 2D(React 里包一层 canvas 组件);Bevy ECS / 调度这类概念本质是图与流程,用 2D 动画模拟即可。
 
 ## 落盘与边界

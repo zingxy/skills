@@ -1,13 +1,13 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.4",
   "description": "Machine-readable catalog of reusable agent skills in this plugin.",
   "basePath": "skills",
   "skills": [
     {
       "name": "design-system",
-      "description": "所有 HTML 交互页共享的视觉语言与设计 tokens 单一事实源——奶油纸面 + 珊瑚色 + 深色产品表面的三色体系、衬线展示字体、lucide 图标,外加场景模板(graphic 教学页、log-review 日志排查)。由产出 HTML 的技能(graphics-teach、wiki-html 等)在动手前加载;不直接响应用户请求。",
+      "description": "所有 HTML 交互页共享的视觉语言与设计 tokens 单一事实源——奶油纸面 + 珊瑚色 + 深色产品表面的三色体系、衬线展示字体、lucide 图标,外加场景模板(graphic 教学页、code-data 伪数据/代码联动页、log-review 日志排查)与表达形式选择指南。由产出 HTML 的技能(graphics-teach、wiki-html 等)在动手前加载;不直接响应用户请求。",
       "path": "skills/design-system/SKILL.md",
-      "when": "Loaded by HTML-producing skills (graphics-teach, wiki-html) before building a page; provides shared tokens, lucide icons, and scenario templates (graphic, log-review); not triggered by user requests directly.",
+      "when": "Loaded by HTML-producing skills (graphics-teach, wiki-html) before building a page; provides shared tokens, lucide icons, and scenario templates (graphic, code-data, log-review); not triggered by user requests directly.",
       "next": [],
       "tags": [
         "html",

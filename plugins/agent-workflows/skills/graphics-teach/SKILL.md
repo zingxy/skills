@@ -50,6 +50,29 @@ description: 生成沉浸式交互教学页来讲解图形学/渲染/游戏引�
 - 视觉规范(tokens、控件、reduced-motion)按 design-system 的「交付模式 B」与所选场景模板。
 - 2D 概念用 Canvas 2D(React 里包一层 canvas 组件);Bevy ECS / 调度这类概念本质是图与流程,用 2D 动画模拟即可。
 
+## 参考素材
+
+动手前先查对应主题的参考,核对公式与术语的标准记法、找讲解角度——不只限这些,按主题扩展:
+
+- **[gamemath.com](https://www.gamemath.com/book/index.html)**(3D Math Primer 全书在线)——向量、矩阵、变换、四元数、几何的**系统推导**,第 4 段「核心原理」的主要素材源。
+- **[3blue1brown](https://www.3blue1brown.com/)**——讲解手法的风格标杆:直觉优先、连续动画、一页一个洞察。学它怎么讲,不查它 API。
+- **[The Book of Shaders](https://thebookofshaders.com/)**——shader / 程序化图形概念;内嵌可改代码的 live editor 是 code-data 联动的风格参照。
+- **[iquilezles.org](https://iquilezles.org/)**——SDF、raymarching、噪声、程序化建模、各类函数的图形学意义,深度文章。
+- **[webgpufundamentals.org](https://webgpufundamentals.org/)**(及姊妹站 webgl / webgl2 fundamentals)——WebGPU/WebGL 的管线、buffer/attribute/texture 机制,大量可运行示例;「出现在哪里」段与 code-data 页面的事实源(顶点属性、索引这类概念以它为准)。
+- **[LearnOpenGL](https://learnopengl.com/)**——OpenGL 教程,概念顺序组织的范本(管线 → 光照 → 模型 → 高级特性)。
+- **[Khronos Wikis](https://wikis.khronos.org/)**——规范级权威定义;术语和 API 语义拿不准时以它为准,不凭记忆写。
+- **[ciechanow.ski](https://ciechanow.ski/)**——交互讲解长文的天花板;「仪器 + 操控台」版式与连续动画建直觉的直接参照。
+- **[ncase.me](https://ncase.me/)**——可玩解释(explorable explanations),「预测再验证」手法的标杆。
+- **[Red Blob Games](https://www.redblobgames.com/)**——游戏算法(A*、网格、程序化生成)交互教程。
+- **[Scratchapixel](https://www.scratchapixel.com/)**——渲染原理系统教程:光栅化、光线追踪、相机模型,从零讲起。
+- **[Physically Based Rendering](https://pbr-book.com/)**——PBR 全书在线,离线渲染深入参考。
+- **[Ray Tracing in One Weekend](https://raytracing.github.io/)**——最小可跟随的光追实现路径,「亲手验证」段的素材。
+- **[Catlike Coding](https://catlikecoding.com/unity/tutorials/)**——Unity/C# 图形与数学教程(程序化网格、渲染),步骤极细。
+- **[GAMES101](https://games-cn.org/intro-graphics/)**——中文图形学系统课(闫令琪,配 bilibili 视频),概念总览与讲解顺序的参照。
+- **[Bevy Cheatbook](https://bevy-cheatbook.github.io/)**——Bevy ECS 实战速查,「出现在哪里」段指回 Bevy 时的事实源。
+
+引用真实 API / 字段名时以 fundamentals 系与 Khronos wiki 为事实源;数学推导以 gamemath 为准;讲解节奏对标 3b1b 与 Book of Shaders。
+
 ## 落盘与边界
 
 - 工程固定在 **`~/graphics-lab/`**(除非用户另指定路径):首次使用 scaffold,已存在则往里加页面——任何会话、任何工作目录里触发,都进同一个实验室,侧边栏持续积累。

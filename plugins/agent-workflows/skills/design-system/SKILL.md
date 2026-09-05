@@ -1,17 +1,17 @@
 ---
 name: design-system
-description: 所有 HTML 交互页共享的视觉语言与设计 tokens 单一事实源——奶油纸面 + 珊瑚色 + 深色产品表面的三色体系、衬线展示字体、lucide 图标,外加场景模板(graphic 教学页、code-data 伪数据/代码联动页、log-review 日志排查)与表达形式选择指南。由产出 HTML 的技能(graphics-teach、wiki-html 等)在动手前加载;不直接响应用户请求。
+description: 所有交互页共享的视觉语言、工程形态与设计 tokens 单一事实源——奶油纸面 + 珊瑚色 + 深色产品表面的三色体系、衬线展示字体、lucide 图标、统一 React+Vite+shadcn 工程(落 ~/digit-garden,禁手写 HTML,导出走 vite-plugin-singlefile),外加场景模板(graphic 教学页、code-data 伪数据/代码联动页、log-review 日志排查)与表达形式选择指南。由产出交互页的技能(graphics-teach、wiki-html 等)在动手前加载;不直接响应用户请求。
 ---
 
 # design-system
 
-所有 HTML 交互页共享的视觉语言,单一事实源。**样式一律用 Tailwind**,不手写零散 CSS;颜色、字阶、圆角集中在 `@theme` tokens,组件一律引用 token,**不硬编码颜色、字号、时长**;canvas/WebGL 绘图用 `getComputedStyle` 读同一组变量。
+所有交互页共享的视觉语言与工程形态,单一事实源。**样式一律用 Tailwind**,不手写零散 CSS;颜色、字阶、圆角集中在 `@theme` tokens,组件一律引用 token,**不硬编码颜色、字号、时长**;canvas/WebGL 绘图用 `getComputedStyle` 读同一组变量。
 
 视觉身份:**奶油纸面(cream)+ 珊瑚色品牌电压(coral)+ 深色产品表面(dark surface)**,衬线展示标题配人文无衬线正文——editorial 杂志感,不是 SaaS 模板感,更不是冷灰蓝的"又一个 AI 工具"。
 
 ## 场景模板:表达形式选择
 
-本文件只定义 tokens 与跨场景规则;模板只管**页面形态**(骨架、控件、版式、联动规则),**讲解策略**(概念分析、讲解手法)归调用模板的场景技能(graphics-teach 等)。**构建页面前先做表达形式选择**——问"这个概念的最小例子是什么":
+本文件只定义 tokens、工程形态与跨场景规则;模板只管**页面形态**(骨架、控件、版式、联动规则),**讲解策略**(概念分析、讲解手法)归调用模板的场景技能(graphics-teach 等)。**构建页面前先做表达形式选择**——问"这个概念的最小例子是什么":
 
 | 概念的核心对象 | 最小例子 | 模板 | 文件 |
 |---|---|---|---|
@@ -23,15 +23,19 @@ description: 所有 HTML 交互页共享的视觉语言与设计 tokens 单一�
 
 新场景先套已有模板;都不合身时才新增模板文件,并在上表登记。
 
-## 交付模式
+## 工程形态
 
-按产物形态二选一,tokens 值不变:
+**统一工程形态,只有这一种**:React + Vite + TypeScript + Tailwind CSS v4(`@tailwindcss/vite`)+ shadcn 风格组件(Radix / Base UI 原语)+ lucide-react。**不允许直接手写 HTML 页面**——一切交互页都是工程里的 React 组件。
 
-**A. 自包含单文件**(wiki-html 等要求双击离线可开的场景):把 `vendor/tailwind.browser.js`(v4 浏览器构建,约 280KB)**全文内联**进 `<head>` 的 `<script>`——不引 CDN、不外链,保住自包含;样式写在 `<style type="text/tailwindcss">` 块,开头 `@import "tailwindcss";`,随后照抄下节 tokens,运行时在浏览器里按需生成,任意工具类都可用。页面体积 +280KB 是正常的。字体外链同样禁止——展示字体自动回落 Georgia/系统衬线。
+- **工程目录**:所有交互页工程固定在 **`~/digit-garden/`**,由本技能统一管理:任何技能要构建交互页,都进这个工程加一个页面/课程;不另起炉灶、不复制脚手架。首次不存在时用 `pnpm create vite` 按本节约定 scaffold。
+- **工程结构约定**:
+  - HashRouter(兼容 file:// 与单文件导出);`/` 是引导/索引页,**每个内容单元一个 URL slug**(`/cw-ccw`);新页面在 `src/courses.ts` 注册(slug、标题、简介、组件)即可直达。
+  - 可收折侧栏做内容导航,**默认收起**为窄轨(只剩编号),主区让位给内容。
+  - **无 logo**:不使用任何图形 logo / 品牌标记(包括 favicon 链接),侧栏只放纯文字站名。
+- **tokens 接入**:`index.css` 里 `@import "tailwindcss";` 后按下节 `@theme` 声明(单一主题,不需要 `@theme inline` 间接层)。字体用 Google Fonts `<link>` 引 Cormorant Garamond + Inter + JetBrains Mono(Copernicus/StyreneB 是授权字体,不可得;这是最接近的开源替代)。
+- **HTML 导出**:仅当用户明确说"导出 HTML / 存进 wiki"时,用 **`vite-plugin-singlefile`** 把对应页面构建成自包含单文件——自包含需求一律走导出,不回退到手写 HTML。
 
-**B. Vite 工程**(graphics-teach 的 graphics-lab 等):`tailwindcss` + `@tailwindcss/vite` 正常接入;`index.css` 里 `@import "tailwindcss";` 后按下节 `@theme` 声明 tokens(本系统单一主题,不需要 `@theme inline` 间接层)。展示/正文字体用 Google Fonts `<link>` 引入 **Cormorant Garamond + Inter + JetBrains Mono**(Copernicus/StyreneB 是授权字体,不可得;这是最接近的开源替代)。
-
-UI 组件用 shadcn 风格(Button / Slider / Card),类名组合遵循「组件配方」。
+UI 组件的类名组合遵循「组件配方」。
 
 ## Tokens
 
@@ -129,8 +133,8 @@ text-link         text-primary 行内链接,按压下划线
 icon-button       size-9 rounded-full bg-canvas border border-hairline text-ink(放 lucide 图标)
 card              bg-surface-card rounded-lg p-8(内容卡)
 card-bordered     bg-canvas border border-hairline rounded-lg p-8(定价/对比卡)
-code-window       bg-dark text-on-dark font-mono rounded-lg p-6,内部代码块 bg-dark-soft,
-                  行号 text-muted-soft;代码横向滚动,不换行
+code-window       bg-dark text-on-dark font-mono rounded-lg p-6,内部代码块 bg-dark-soft;
+                  **行号必备**,text-muted-soft;代码横向滚动,不换行
 callout-coral     bg-primary text-on-primary rounded-lg p-8/p-12——整 bleed 珊瑚是稀缺的大动作
 badge             bg-surface-card text-ink rounded-full px-3 py-1 caption
 badge-coral       bg-primary text-on-primary rounded-full px-3 py-1 caption-uppercase
@@ -141,10 +145,8 @@ text-input        bg-canvas border border-hairline rounded-md h-10 px-3.5 text-[
 
 ## 图标:统一 lucide
 
-- 图标一律来自 **lucide**,不混用其他图标集,不拿 emoji 当图标。
-- 模式 A(自包含):从 lucide 复制**用到的**图标 SVG 原文内联,`stroke="currentColor"`,不引 CDN。
-- 模式 B(Vite):`lucide-react` 包,`<Icon size={20} strokeWidth={1.75} />`。
-- 尺寸阶梯 16 / 20 / 24,`stroke-width` 1.5~2,颜色用 `currentColor` 跟随上下文文字色。
+- 图标一律来自 **lucide**(`lucide-react` 包),不混用其他图标集,不拿 emoji 当图标。
+- 用法:`<Icon size={20} strokeWidth={1.75} />`;尺寸阶梯 16 / 20 / 24,`stroke-width` 1.5~2,颜色用 `currentColor` 跟随上下文文字色。
 
 ## canvas 绘图取色
 
@@ -172,4 +174,4 @@ const color = (name) => css.getPropertyValue(`--color-${name}`).trim();
 **Don't**
 - 不用纯白/冷灰做底色;不用冷蓝、饱和青做强调色;不引入第四种表面色调(紫卡、绿区块)。
 - 不给衬线展示体加粗;不用 Inter 做展示标题。
-- 不手写 hex、字号、时长到组件里;不从 lucide 之外取图标。
+- 不手写 hex、字号、时长到组件里;不从 lucide 之外取图标;不绕过工程手写 HTML。

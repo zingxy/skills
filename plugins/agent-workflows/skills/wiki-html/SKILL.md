@@ -28,7 +28,7 @@ description: 生成面向人类阅读的自包含 HTML 交互页(拖拽图示、
 
 ## 实现
 
-- **加载 `design-system` 技能**:页面视觉(tokens、骨架、控件、动效、lucide 图标)以它为准,并按「表达形式选择」选用模板——图形演示用 `templates/graphic.md`,数据/代码概念用 `templates/code-data.md`,日志排查/复盘用 `templates/log-review.md`;骨架与自包含的硬性要求见契约。
+- **加载 `design-system` 技能**:页面视觉(tokens、控件、动效、lucide 图标)以它为准,并按「表达形式选择」选用模板——图形演示用 `templates/graphic.md`,数据/代码概念用 `templates/code-data.md`,日志排查/复盘用 `templates/log-review.md`。**不手写 HTML**:页面在 `~/digit-garden` 工程里构建(见 design-system「工程形态」),用 `vite-plugin-singlefile` 导出自包含单文件;落盘位置与配套页的硬性要求见契约。
 - 落盘前先验证:实际打开页面确认交互可用、无控制台报错、视觉符合规范(有 playwright 之类工具就真的打开,没有就逐段复查代码)。
 
 ## 完成后

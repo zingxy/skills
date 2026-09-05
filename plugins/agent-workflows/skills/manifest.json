@@ -1,18 +1,19 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Machine-readable catalog of reusable agent skills in this plugin.",
   "basePath": "skills",
   "skills": [
     {
       "name": "design-system",
-      "description": "HTML 交互页的共享设计系统——双主题 tokens(语义色 + manim 系教学强调色)、控件模式(舞台/滑块/播放暂停/拖拽手柄/标注/步进)、动效规则;支持两种交付:自包含单文件(内联 Tailwind v4 浏览器构建)与 Vite 工程(Tailwind + shadcn 风格组件)。任何要构建 HTML 页面的技能(graphics-teach、wiki-html 等)动手前加载本技能;不直接响应用户请求。",
+      "description": "所有 HTML 交互页共享的视觉语言与设计 tokens 单一事实源——奶油纸面 + 珊瑚色 + 深色产品表面的三色体系、衬线展示字体、lucide 图标,外加场景模板(graphic 教学页、log-review 日志排查)。由产出 HTML 的技能(graphics-teach、wiki-html 等)在动手前加载;不直接响应用户请求。",
       "path": "skills/design-system/SKILL.md",
-      "when": "Loaded by HTML-producing skills (graphics-teach, wiki-html) before building a page; not triggered by user requests directly.",
+      "when": "Loaded by HTML-producing skills (graphics-teach, wiki-html) before building a page; provides shared tokens, lucide icons, and scenario templates (graphic, log-review); not triggered by user requests directly.",
       "next": [],
       "tags": [
         "html",
         "design",
-        "tokens"
+        "tokens",
+        "templates"
       ]
     },
     {

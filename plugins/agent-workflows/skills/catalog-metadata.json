@@ -23,9 +23,9 @@
       "tags": ["wiki", "html", "knowledge"]
     },
     "design-system": {
-      "when": "Loaded by HTML-producing skills (graphics-teach, wiki-html) before building a page; not triggered by user requests directly.",
+      "when": "Loaded by HTML-producing skills (graphics-teach, wiki-html) before building a page; provides shared tokens, lucide icons, and scenario templates (graphic, log-review); not triggered by user requests directly.",
       "next": [],
-      "tags": ["html", "design", "tokens"]
+      "tags": ["html", "design", "tokens", "templates"]
     },
     "graphics-teach": {
       "when": "When the user wants a graphics, rendering, or game-engine concept explained as an immersive interactive teaching page.",

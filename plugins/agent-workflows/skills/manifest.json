@@ -1,11 +1,35 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Machine-readable catalog of reusable agent skills in this plugin.",
   "basePath": "skills",
   "skills": [
     {
+      "name": "design-system",
+      "description": "HTML 交互页的共享设计系统——双主题 tokens(语义色 + manim 系教学强调色)、控件模式(舞台/滑块/播放暂停/拖拽手柄/标注/步进)、动效规则;支持两种交付:自包含单文件(内联 Tailwind v4 浏览器构建)与 Vite 工程(Tailwind + shadcn 风格组件)。任何要构建 HTML 页面的技能(graphics-teach、wiki-html 等)动手前加载本技能;不直接响应用户请求。",
+      "path": "skills/design-system/SKILL.md",
+      "when": "Loaded by HTML-producing skills (graphics-teach, wiki-html) before building a page; not triggered by user requests directly.",
+      "next": [],
+      "tags": [
+        "html",
+        "design",
+        "tokens"
+      ]
+    },
+    {
+      "name": "graphics-teach",
+      "description": "生成沉浸式交互教学页来讲解图形学/渲染/游戏引擎概念(Canvas 2D 原理、渲染管线、矩阵变换、曲线、Three.js、WebGL、Bevy ECS 等),风格对标 3Blue1Brown / GeoGebra / Desmos——以连续动画和可拖参数建立直觉。当用户说\"给我讲讲 / 解释一下 / 做个页面演示 X\"且主题是图形学相关概念时使用。产物默认落当前目录;用户要求沉淀进 wiki 时,归档转交 wiki-html。",
+      "path": "skills/graphics-teach/SKILL.md",
+      "when": "When the user wants a graphics, rendering, or game-engine concept explained as an immersive interactive teaching page.",
+      "next": [],
+      "tags": [
+        "html",
+        "teaching",
+        "graphics"
+      ]
+    },
+    {
       "name": "wiki-html",
-      "description": "生成人类阅读的自包含 HTML 交互页(拖拽图示、动画演示、可调参数的可视化),走 artifact-design 设计工作流,并按约定沉淀进位于 ~/writing/llm-wiki 的 LLM Wiki 的 html/ 目录——建配套概念页、互链、记 log。当用户说\"做个交互页存进 wiki / 把这个主题做成 html 沉淀到知识库 / wiki html / 给 wiki 做个可视化页面 / 把刚才的演示页收进 wiki\"时使用;凡是产出 HTML 且归宿是 llm-wiki 的场景都应触发。",
+      "description": "生成面向人类阅读的自包含 HTML 交互页(拖拽图示、动画演示、可调参数的可视化),沉淀进 ~/writing/llm-wiki 的 html/ 目录并配概念页、互链、log。当用户说\"做个交互页/可视化页面存进 wiki\"\"把这个主题做成 html 沉淀进知识库\"\"wiki html\",或要把已有演示页收进 wiki 时使用;凡是 HTML 产物归宿是 llm-wiki 的场景都触发。",
       "path": "skills/wiki-html/SKILL.md",
       "when": "When the user wants an interactive HTML page produced for and archived into the LLM Wiki.",
       "next": [],

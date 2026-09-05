@@ -21,6 +21,16 @@
       "when": "When the user wants an interactive HTML page produced for and archived into the LLM Wiki.",
       "next": [],
       "tags": ["wiki", "html", "knowledge"]
+    },
+    "design-system": {
+      "when": "Loaded by HTML-producing skills (graphics-teach, wiki-html) before building a page; not triggered by user requests directly.",
+      "next": [],
+      "tags": ["html", "design", "tokens"]
+    },
+    "graphics-teach": {
+      "when": "When the user wants a graphics, rendering, or game-engine concept explained as an immersive interactive teaching page.",
+      "next": [],
+      "tags": ["html", "teaching", "graphics"]
     }
   }
 }

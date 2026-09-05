@@ -71,7 +71,7 @@
                 0 8px 40px color-mix(in srgb, var(--color-primary) 18%, transparent);
   }
   ```
-- **eyebrow 标签**:每个章节顶部一行 `font-mono text-xs uppercase tracking-[0.25em] text-muted`,前缀 20px 的 primary 短横线。标签词按教学法命名(动机/直觉/拆解/实验室/回响/挑战),把讲解结构编码进版式,不写装饰性标签。
+- **eyebrow 标签**:每个章节顶部一行 `font-mono text-xs uppercase tracking-[0.25em] text-muted`,前缀 20px 的 primary 短横线。标签词按教学法命名(动机/直觉/拆解/原理/实验室/回响/挑战),把讲解结构编码进版式,不写装饰性标签。
 - **可收折侧栏**:概念导航侧栏支持收起成窄轨(只剩编号),主区让位给仪器;宽度过渡 300ms。3D 场景用 ResizeObserver 跟随容器尺寸变化。
 - **深链**:每屏带 id,支持 `?screen=xxx` 直达(测试截图和分享都用得上)。
 - **展示标题**:`--font-display` 衬线(模式 B 引 Cormorant Garamond,模式 A 回落 Georgia),页面标题、章节标题专用,weight 400 + 负字距(见核心字阶表)。

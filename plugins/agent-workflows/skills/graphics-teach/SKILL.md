@@ -49,14 +49,13 @@ description: 生成沉浸式交互教学页来讲解图形学/渲染/游戏引�
 
   | 内容本性 | 渲染器 |
   |---|---|
-  | 标注密集的几何图示、少量对象、需要清晰文字/箭头/虚线(向量图、几何拆解、坐标系示意) | **SVG**——声明式,React 直接渲染,文字锐利可选中,样式走 Tailwind/token |
+  | 标注密集的几何图示、少量对象、需要清晰文字/箭头/虚线(向量图、几何拆解、坐标系示意) | **SVG**——JSX 原生渲染,不引入专门库(recharts/visx 自带默认外观,与本系统冲突);文字锐利可选中,样式走 Tailwind/token |
   | 大量运动对象、逐像素效果、shader、光栅化/纹理演示 | **PixiJS**(WebGL) |
   | 3D 场景 | **Three.js**(配 OrbitControls) |
   | 概念本身就是 Canvas 2D / WebGL 底层 API 原理 | 原生 API——此时它是教学对象,才手写 |
 
-- **SVG 不引入专门库**:JSX 原生渲染 SVG 元素已够用——声明式、随 React state 自动更新、样式走 Tailwind/token;`recharts`、`visx` 这类数据图库自带默认外观,与设计系统冲突,不引入;复杂路径计算用下面 D3 的纯函数模块。
-- **D3 只用纯函数工具模块**(`d3-scale`、`d3-shape`、`d3-interpolate`)辅助计算坐标与路径;不用 data-join / `d3.select` 操作 DOM——那套与 React 渲染模型冲突;坐标轴、网格线按 graphic 模板样式自绘,不引入 d3-axis 默认外观。
-- **动画用 GSAP(或 anime.js)**:相机飞行、分步过渡、数值 tween 都交给它,不手写补间。公式一律 LaTeX + KaTeX(见 design-system「数学公式」节),状态简单就用 React state。
+- **D3 只用纯函数工具模块**(`d3-scale`、`d3-shape`、`d3-interpolate`)辅助计算 SVG 的坐标与路径;不用 data-join / `d3.select` 操作 DOM——那套与 React 渲染模型冲突;坐标轴、网格线按 graphic 模板样式自绘,不引入 d3-axis 默认外观。
+- **动画用 GSAP(或 anime.js)**:相机飞行、分步过渡、数值 tween 都交给它,不手写补间。公式一律 LaTeX + KaTeX(见 design-system「数学公式」节)。
 
 ## 参考素材
 

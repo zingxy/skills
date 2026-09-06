@@ -23,14 +23,14 @@
       "tags": ["wiki", "html", "knowledge"]
     },
     "design-system": {
-      "when": "Loaded by page-producing skills (graphics-teach, wiki-html) before building a page; owns shared tokens, the unified React+Vite project form (~/digit-garden, no hand-written HTML, vite-plugin-singlefile export), lucide icons, and scenario templates (graphic, code-data, log-review); not triggered by user requests directly.",
+      "when": "Loaded by page-producing skills (graphics-teach, wiki-html) before building a page; owns shared tokens, the unified React+Vite project form (~/digit-garden, no hand-written HTML, vite-plugin-singlefile export), lucide icons, LaTeX/KaTeX math rendering, and scenario templates (graphic, code-data, log-review); not triggered by user requests directly.",
       "next": [],
-      "tags": ["html", "design", "tokens", "templates"]
+      "tags": ["html", "design", "tokens", "templates", "math"]
     },
     "graphics-teach": {
       "when": "When the user wants a graphics, rendering, or game-engine concept explained as an immersive interactive teaching page.",
       "next": [],
-      "tags": ["html", "teaching", "graphics"]
+      "tags": ["html", "teaching", "graphics", "svg"]
     }
   }
 }

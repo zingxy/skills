@@ -162,7 +162,7 @@ const color = (name) => css.getPropertyValue(`--color-${name}`).trim();
 ## 数学公式:一律 LaTeX + KaTeX
 
 - 任何数学符号、变量、公式**必须用 LaTeX 书写**,由 **KaTeX** 渲染;不手写 Unicode 近似(×、∇、α、上标²),不截图贴图片公式,不引入 MathJax——KaTeX 覆盖不到的构造极罕见,真遇到再单独评估。
-- 选型理由:KaTeX 同步渲染、无闪烁、速度远快于 MathJax([实测差一个数量级](https://github.com/KaTeX/KaTeX)),基于字体的输出与衬线展示体系兼容;React 侧用 `react-katex` 的 `<InlineMath>` / `<BlockMath>`。
+- 选型理由:KaTeX 同步渲染、无闪烁、速度远快于 MathJax,基于字体的输出与衬线展示体系兼容;React 侧用 `react-katex` 的 `<InlineMath>` / `<BlockMath>`。
 - 接入:`pnpm add katex react-katex`;`index.css` 里在 `@import "tailwindcss";` 前加 `@import "katex/dist/katex.min.css";`,KaTeX 字体随 Vite 打包,不走 CDN。
 - 用法约定:行内变量/短式用 `InlineMath`,独立成段或居中大式用 `BlockMath`;公式颜色随 `currentColor`、字号随上下文字阶,不在公式里硬编码样式。
 - 单文件导出:KaTeX 字体是 woff2 资源,导出构建时把 `build.assetsInlineLimit` 调大(如 `100000000`)让字体 base64 内联,保证 `vite-plugin-singlefile` 产物自包含。
@@ -182,6 +182,4 @@ const color = (name) => css.getPropertyValue(`--color-${name}`).trim();
 
 **Don't**
 - 不用纯白/冷灰做底色;不用冷蓝、饱和青做强调色;不引入第四种表面色调(紫卡、绿区块)。
-- 不给衬线展示体加粗;不用 Inter 做展示标题。
-- 不手写 hex、字号、时长到组件里;不从 lucide 之外取图标;不绕过工程手写 HTML。
-- 不用 Unicode 符号、图片或 MathJax 凑数学公式——一律 LaTeX + KaTeX。
+- 不用 Inter 做展示标题。

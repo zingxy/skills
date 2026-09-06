@@ -1,6 +1,6 @@
 ---
 name: design-system
-description: 所有交互页共享的视觉语言、工程形态与设计 tokens 单一事实源——奶油纸面 + 珊瑚色 + 深色产品表面的三色体系、衬线展示字体、lucide 图标、统一 React+Vite+shadcn 工程(落 ~/digit-garden,禁手写 HTML,导出走 vite-plugin-singlefile),外加场景模板(graphic 教学页、code-data 伪数据/代码联动页、log-review 日志排查)与表达形式选择指南。由产出交互页的技能(graphics-teach、wiki-html 等)在动手前加载;不直接响应用户请求。
+description: 所有交互页共享的视觉语言、工程形态与设计 tokens 单一事实源——奶油纸面 + 珊瑚色 + 深色产品表面的三色体系、衬线展示字体、lucide 图标、数学公式一律 LaTeX+KaTeX 渲染、统一 React+Vite+shadcn 工程(落 ~/digit-garden,禁手写 HTML,导出走 vite-plugin-singlefile),外加场景模板(graphic 教学页、code-data 伪数据/代码联动页、log-review 日志排查)与表达形式选择指南。由产出交互页的技能(graphics-teach、wiki-html 等)在动手前加载;不直接响应用户请求。
 ---
 
 # design-system
@@ -159,6 +159,15 @@ const color = (name) => css.getPropertyValue(`--color-${name}`).trim();
 
 单一主题,无需监听主题切换;取色在初始化时读一次即可。
 
+## 数学公式:一律 LaTeX + KaTeX
+
+- 任何数学符号、变量、公式**必须用 LaTeX 书写**,由 **KaTeX** 渲染;不手写 Unicode 近似(×、∇、α、上标²),不截图贴图片公式,不引入 MathJax——KaTeX 覆盖不到的构造极罕见,真遇到再单独评估。
+- 选型理由:KaTeX 同步渲染、无闪烁、速度远快于 MathJax([实测差一个数量级](https://github.com/KaTeX/KaTeX)),基于字体的输出与衬线展示体系兼容;React 侧用 `react-katex` 的 `<InlineMath>` / `<BlockMath>`。
+- 接入:`pnpm add katex react-katex`;`index.css` 里在 `@import "tailwindcss";` 前加 `@import "katex/dist/katex.min.css";`,KaTeX 字体随 Vite 打包,不走 CDN。
+- 用法约定:行内变量/短式用 `InlineMath`,独立成段或居中大式用 `BlockMath`;公式颜色随 `currentColor`、字号随上下文字阶,不在公式里硬编码样式。
+- 单文件导出:KaTeX 字体是 woff2 资源,导出构建时把 `build.assetsInlineLimit` 调大(如 `100000000`)让字体 base64 内联,保证 `vite-plugin-singlefile` 产物自包含。
+- canvas/WebGL 画面内的短标注(轴标签、向量名)直接在 canvas 画文本,颜色遵守 graphic 模板的 `--color-c-*`;复杂公式标注放 canvas 上方的 HTML 层用 KaTeX 渲染。
+
 ## 动效规则
 
 - 连续动画走 `requestAnimationFrame`(全页一个主循环);UI 过渡用 Tailwind 的 `transition` + `duration-150`/`duration-300`,缓动 `ease-out`。
@@ -175,3 +184,4 @@ const color = (name) => css.getPropertyValue(`--color-${name}`).trim();
 - 不用纯白/冷灰做底色;不用冷蓝、饱和青做强调色;不引入第四种表面色调(紫卡、绿区块)。
 - 不给衬线展示体加粗;不用 Inter 做展示标题。
 - 不手写 hex、字号、时长到组件里;不从 lucide 之外取图标;不绕过工程手写 HTML。
+- 不用 Unicode 符号、图片或 MathJax 凑数学公式——一律 LaTeX + KaTeX。

@@ -33,7 +33,7 @@
 
 ## 控件模式
 
-- **舞台**:`<div className="stage rounded-xl border border-hairline p-3">` 包住 canvas(`.stage` 的坐标纸纹理见「版式模式」);canvas 的 CSS 尺寸与像素尺寸分离,按 `devicePixelRatio` 缩放,避免高分屏发虚。
+- **舞台**:`<div className="stage rounded-xl border border-hairline p-3">` 包住 canvas 或 SVG(`.stage` 的坐标纸纹理见「版式模式」);canvas 的 CSS 尺寸与像素尺寸分离,按 `devicePixelRatio` 缩放,避免高分屏发虚;SVG 矢量天然清晰,无需 DPR 处理。
 - **滑块**:shadcn `<Slider>`。每个可调参数一行 `flex items-center gap-3`——标签(`text-sm text-muted`)+ 滑块 + 当前值(`font-mono text-sm`,随拖动实时更新)。
 - **播放/暂停**:button-secondary 配方 + `transition hover:border-primary`,图标用 lucide 的 `Play`/`Pause`。
 - **拖拽手柄**:canvas 里可拖的点,半径 ≥ 8px,`--color-c-amber` 填充 + 2px `--color-canvas` 描边,hover 放大 1.2 倍,拖动时 `cursor: grabbing`。
